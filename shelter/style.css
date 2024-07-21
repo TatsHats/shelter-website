@@ -1,12 +1,29 @@
-@import url('assets/fonts/arial/arial-regular.ttf');
-@import url('assets/fonts/georgia/georgia-regular.ttf');
+@font-face {
+    font-family: 'Arial';
+    src: url('assets/fonts/arial/arial-regular.ttf') format('truetype');
+}
 
 @font-face {
-    font-family: 'arial'; /* Название вашего шрифта */
-    src: url('assets/fonts/arial/arial-regular') format('ttf'); /* Путь к файлу WOFF2 */
-    
-    font-weight: normal; /* Вес шрифта */
-    font-style: normal; /* Стиль шрифта */
+    font-family: 'Georgia';
+    src: url('assets/fonts/georgia/georgia-regular.ttf') format('truetype');
+}
+
+:root {
+	--color-light-xl: #fff;
+	--color-light-l: #f6f6f6;
+	--color-light-s: #fafafa;
+	--color-dark-s: #cdcdcd;
+	--color-dark-m: #b2b2b2;
+	--color-dark-l: #545454;
+	--color-dark-xl: #4c4c4c;
+	--color-dark-2xl: #444;
+	--color-dark-3xl: #292929;
+	--color-primary: #f1cdb3;
+	--color-primary-light: #fddcc4;
+	--start-screen-gradient-background: #211f20;
+	--footer-gradient-background: #211f20;
+    --primary-font-family: "Georgia", sans-serif;
+    --secondary-font-family: "Arial", sans-serif;
 }
 
 html {
@@ -18,20 +35,31 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
+    font-family: var(--secondary-font-family);
+    font-weight: 400;
+}
+
+h1, h2, h3 {
+    font-family: var(--primary-font-family);
+    font-weight: 400;
 }
 
 .container {
-    max-width: 1280px;
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400;
+    width: 1280px;
 }
 
 .background {
     background: url("assets/main/img/start-screen-gradient-background.jpg"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
-    background-size: cover; /* Изображение покрывает весь контейнер */
-    background-position: center; /* Центрирует изображение */
-    background-repeat: no-repeat; /* Не повторяет изображение */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.heading {
+    line-height: 1.3em;
+    font-size: 35px;
+    letter-spacing: 0.06em;
+    margin: 15px 0 0 0;
 }
 
 header {
@@ -45,6 +73,9 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
     }
 
         .logo p {
@@ -52,16 +83,15 @@ header {
             padding: 0;
         }
 
-        .logo-name {
-            color: #f1cdb3;
+        .title {
+            color: var(--color-primary);
             font-size: 32px;
-            font-family: Georgia, serif;
-            margin: 0.1em;
+            margin: 0;
             letter-spacing: 0.06em;
         }
 
-        .logo-description {
-            color: white;
+        .subtitile {
+            color: var(--color-light-s);
             font-size: 13px;
             letter-spacing: 0.1em;
             line-height: 1.6em;
@@ -70,7 +100,6 @@ header {
         }
 
     .nav-list {
-
         display: flex;
         flex-direction: row;
         cursor: pointer;  
@@ -83,11 +112,11 @@ header {
 
             .nav-link, .nav-link-select {
                 text-decoration: none;
-                color: white;
+                color: var(--color-dark-s);
                 line-height: 1.6em;
                 font-size: 15px;
                 line-height: 24px;
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: var(--second-family);
                 font-weight: 400;
             }
 
@@ -97,16 +126,16 @@ header {
             }
 
                 .nav-link:hover {
-                    text-decoration: underline;
-                    box-shadow: 0 5px 10px -5px rgb(255, 255, 255);
+                    color: var(--color-light-s);
                 }
+
 
 .section-start-content {
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    padding: 50px 40px 0 40px;
+    padding: 46px 40px 0 40px;
 }
 
     .start-content {
@@ -114,41 +143,47 @@ header {
         align-items: start;
         flex-direction: column;
         width: 460px;
-        color: white;
-        margin-top: 120px;
+        color: var(--color-light-s);
+        margin-top: 150px;
         font-size: 15px;
     }
 
-        .title {
-            color: white;
-            line-height: 1.25em;
+        .start-content h2.heading {
+            color: var(--color-light-s);
+            line-height: 1.3em;
             font-size: 44px;
-            font-family: Georgia, serif;
-            font-weight: 400;
+            letter-spacing: 0;
         }
 
         .start-content p {
             margin: 0;
+            margin-top: 40px;
             line-height: 1.6em;
         }
 
         .button-start {
-            color: #292929;
-            background: #f1cdb3;
+            color: var(--color-dark-3xl);
+            background: var(--color-primary);
             border-radius: 50px;
-            cursor: pointer;
             font-size: 17px;
-            border: none;
-            margin-top: 40px;
+            border: none; 
+            margin-top: 42px;
             width: 207px;
             height: 52px;
-            font-family: Georgia, serif;
-            font-weight: 400;
+            font-family: var(--primary-font-family);
             letter-spacing: 0.05em;
+            text-align: center;
+            line-height: 50px; 
+            text-decoration: none;
         }
 
+            .button-start:hover {
+                background: var(--color-primary-light);
+                cursor: pointer;
+            }
+
     .start-image {
-        width: 698;
+        width: 698px;
         height: auto;
         position: relative;
         display: flex;
@@ -159,7 +194,7 @@ header {
 
 
 .about {
-    background: white;
+    background: var(--color-light-xl);
     display: flex;
     justify-content: center;
     flex-direction: row; 
@@ -176,32 +211,24 @@ header {
     .about-content {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        color: 4c4c4c;
-        margin-right: 10px;
+        justify-content: space-between;
+        color: var(--color-dark-l);
+        margin: 0 13px 14px 0;
     }
 
-        .heading {
-            line-height: 1.3em;
-            font-size: 35px;
-            font-family: Georgia, serif;
-            letter-spacing: 0.06em;
-            font-weight: 400;
-        }
         .about h2.heading {
-            margin-top: 12px;
             text-align: left;
         }
 
         .about-content p {
-            margin-top: 0;
             line-height: 24px;
             font-size: 15px;
-            margin-bottom: 20px;
+            margin: 0;
         }
 
+
 .our-pets {
-    background: #fafafa;
+    background: var(--color-light-l);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -210,17 +237,15 @@ header {
 
     .our-pets h2.heading {
         text-align: center;
-        font-family: Georgia, serif;
         letter-spacing: 0.06em;
-        font-weight: 400;
-        line-height: 1.2em;
+        line-height: 1.3em;
         font-size: 35px;
         margin: 0;
     }
 
     .slider {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
         margin-top: 60px;
@@ -235,8 +260,7 @@ header {
             display: flex;
             align-items: center;
             background: none;
-            border-color: #f1cdb3;
-            margin: 0 5px;
+            border: 2px solid var(--color-primary);
         }
 
             .arrow img {
@@ -248,8 +272,8 @@ header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: white;
-            border-radius: 10px;
+            background: var(--color-light-s);
+            border-radius: 9px;
             width: 270px;
             height: 435px;
             margin: 0 45px;
@@ -260,13 +284,20 @@ header {
                 height: auto;
             }
 
+            .pet p {
+                margin: 28px 0;
+                font-size: 20px;
+                letter-spacing: 0.06em;
+                font-family: var(--primary-font-family);
+            }
+
             .button-pets {
                 border-radius: 50px;
                 cursor: pointer;
                 font-size: 17px;
                 padding: 0 45px;
                 background: none;
-                border-color: #f1cdb3;
+                border: 2px solid var(--color-primary);
                 width: 187px;
                 height: 52px;
                 letter-spacing: 0.03em;
@@ -274,28 +305,24 @@ header {
                 font-weight: 400;
             }
 
-            .pet p {
-                margin: 30px 0;
-                font-size: 20px;
-                letter-spacing: 0.06em;
-            }
-
     .button-pets-rest {
-        background: #f1cdb3;
+        background: var(--color-primary);
         border-radius: 50px;
         border: none;
         cursor: pointer;
         font-size: 17px;
         padding: 15px 45px;
         margin: 60px 0 0 0;
-        font-family: Georgia, serif;
+        font-family: var(--primary-font-family);
         letter-spacing: 0.06em;
         font-weight: 400;
         line-height: 1.3em;
     }
 
+    
 .section-help {
-    padding: 50px 40px 45px 40px;
+    padding: 62px 40px 45px 40px;
+    background: var(--color-light-xl);
 }
 
     .section-help h2.heading {
@@ -326,75 +353,79 @@ header {
                 margin: 0;
                 margin-top: 30px;
                 font-size: 20px;
-                font-family: Georgia, serif;
+                font-family: var(--primary-font-family);
                 letter-spacing: 0.06em;
-                font-weight: 400;
                 line-height: 1.15em;
-                color: #545454;
+                color: var(--color-dark-l);
                 text-decoration: none;
             }
 
-            .help-items a:hover {
-                text-decoration: underline;
-                box-shadow: 0 5px 10px -5px rgb(255, 255, 255);
-            }
+                .help-items a:hover {
+                    color: var(--color-dark-3xl);
+                }
 
 
 .section-donation {
-    background: #fafafa;
-    padding: 80px 182px 100px 183px;
+    background: var(--color-light-l);
+    padding: 80px 182px 90px 183px;
 }
 
     .donation-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-right: 20px;
+        padding-right: 22px;
     }
 
-    .donation-content img {
-        width: 505;
-        height: 261;
-    }
+        .donation-content img {
+            width: 505px;
+            height: 261px;
+        }
 
-    .content h2.heading {
-        margin: 0 0 20px 0;
-    }
+        .content h2.heading {
+            margin: 0 0 20px 0;
+        }
 
         .subheading {
             margin: 0 0 20px 0;
-            font-family: Georgia, serif;
+            font-family: var(--primary-font-family);
             letter-spacing: 0.06em;
-            font-weight: 400;
             font-size: 15px;
+            font-weight: 400;
         }
 
         .donation-cart {
             display: flex;
             flex-direction: row;
             align-items: center;
-            background: #f1cdb3;
+            background: var(--color-primary);
             border-radius: 10px;
-            width: 349px;
+            width: 334px;
             height: 40px;
-            padding: 5px 0 5px 15px;
+            padding-left: 12px;
         }
 
-            .donation-cart p {
-                font-family: Georgia, serif;
-                letter-spacing: 0.05em;
-                font-weight: 400;
+            .donation-cart a {
+                font-family: var(--primary-font-family);
+                letter-spacing: 0.06em;
                 line-height: 1.15em;
                 font-size: 20px;
-                margin: 0 0 0 10px;
+                margin: 0 0 0 15px;
+                text-decoration: none;
+                color: inherit;
+                cursor: pointer;
+            }
+
+            .donation-cart img {
+                width: 30px;
+                height: 23px;
             }
 
             .section-donation-text {
-                font-weight: 400;
                 font-size: 12px;
                 font-style: italic;
                 line-height: 1.5em;
-                margin-top: 10px;
+                margin-top: 20px;
             }
 
 
@@ -417,36 +448,37 @@ padding: 40px 40px 0 40px;
         .contacts {
             display: flex;
             flex-direction: column;
-            color: white;
-            height: 234px !important;
+            color: var(--color-light-xl);
+            height: 234px;
             justify-content: space-between;
+            padding: 15px 0 0 0;
         }
 
             .footer-content h3 {
-                font-family: Georgia, serif;
                 letter-spacing: 0.06em;
-                font-weight: 400;
                 line-height: 1.3em;
                 font-size: 35px;
-                margin: 10px 0;
+                margin: 0;
             }
 
-            .contacts-text {
+            .email-link, .phone-link, .contacts-text {
                 display: flex;
-                flex-direction: row;
                 align-items: center;
+                flex-direction: row;
+                text-decoration: none;
+                color: inherit;
             }
 
-                .contacts-text img {
-                    width: auto;
-                    height: auto;
-                    margin-right: 20px;
+                .email-link img, .phone-link img, .contacts-text img {
+                        width: auto;
+                        height: auto;
+                        margin-right: 20px;
                 }
 
-                .contacts-text p {
+                .email-link p, .phone-link p, .contacts-text p {
                     margin: 0;
-                    color: #f1cdb3;
-                    font-family: Georgia, serif;
+                    color: var(--color-primary);
+                    font-family: var(--primary-font-family);
                     letter-spacing: 0.06em;
                     font-weight: 400;
                     line-height: 1.15em;
