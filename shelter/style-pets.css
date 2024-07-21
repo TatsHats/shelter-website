@@ -105,7 +105,6 @@ header {
                 font-size: 15px;
                 line-height: 24px;
                 font-family: var(--second-family);
-                font-weight: 400;
             }
 
             .nav-link-select {
@@ -155,7 +154,16 @@ header {
             width: 270px;
             height: 435px;
             margin-bottom: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.5s, border 0.5s;
         }
+
+            .pet:hover .button-pets {
+                background: var(--color-primary-light);
+                border: 2px solid var(--color-primary-light);
+            }
 
             .pet img {
                 width: 100%;
@@ -167,7 +175,7 @@ header {
                 border-radius: 50px;
                 cursor: pointer;
                 font-size: 17px;
-                padding: 0 45px;
+                padding: 14px 45px;
                 background: none;
                 border: 2px solid var(--color-primary);
                 color: var(--color-dark-3xl);
@@ -175,16 +183,20 @@ header {
                 height: 52px;
                 letter-spacing: 0.03em;
                 font-family: var(--primary-font-family);
+                box-sizing: border-box;
+                transition: background 0.5s, border 0.5s;
             }
 
             .button-pets:hover {
                 background: var(--color-primary-light);
+                border: 2px solid var(--color-primary-light);
             }
 
             .pet p {
                 margin: 30px 0;
                 font-size: 20px;
                 letter-spacing: 0.06em;
+                font-family: var(--primary-font-family);
             }
 
         .navigation {
@@ -207,6 +219,8 @@ header {
 
         .arrow:hover {
             background: var(--color-primary-light);
+            border: 2px solid var(--color-primary-light);
+            transition: background 0.5s, border 0.5s;
         }
 
         .arrow-active {
@@ -214,64 +228,65 @@ header {
         }
 
 
-        .footer {
-            height: 350px;
-            background: url("assets/main/img/footer-background.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 40px 40px 0 40px;
+.footer {
+    height: 350px;
+    background: url("assets/main/img/footer-background.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px 40px 0 40px;
+    box-sizing: border-box;
+    }
+    
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+    
+            .contacts {
+                display: flex;
+                flex-direction: column;
+                color: var(--color-light-xl);
+                height: 234px;
+                justify-content: space-between;
+                padding: 15px 0 0 0;
             }
-            
-                .footer-content {
-                    display: flex;
-                    justify-content: space-between;
-                    flex-direction: row;
-                    align-items: flex-start;
+    
+                .footer-content h3 {
+                    letter-spacing: 0.06em;
+                    line-height: 1.3em;
+                    font-size: 35px;
+                    margin: 0;
                 }
-            
-                    .contacts {
-                        display: flex;
-                        flex-direction: column;
-                        color: var(--color-light-xl);
-                        height: 234px;
-                        justify-content: space-between;
-                        padding: 15px 0 0 0;
+    
+                .email-link, .phone-link, .contacts-text {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    text-decoration: none;
+                    color: inherit;
+                }
+    
+                    .email-link img, .phone-link img, .contacts-text img {
+                            width: auto;
+                            height: auto;
+                            margin-right: 20px;
                     }
-            
-                        .footer-content h3 {
-                            letter-spacing: 0.06em;
-                            line-height: 1.3em;
-                            font-size: 35px;
-                            margin: 0;
-                        }
-            
-                        .email-link, .phone-link, .contacts-text {
-                            display: flex;
-                            align-items: center;
-                            flex-direction: row;
-                            text-decoration: none;
-                            color: inherit;
-                        }
-            
-                            .email-link img, .phone-link img, .contacts-text img {
-                                    width: auto;
-                                    height: auto;
-                                    margin-right: 20px;
-                            }
-            
-                            .email-link p, .phone-link p, .contacts-text p {
-                                margin: 0;
-                                color: var(--color-primary);
-                                font-family: var(--primary-font-family);
-                                letter-spacing: 0.06em;
-                                font-weight: 400;
-                                line-height: 1.15em;
-                                font-size: 20px;
-                            }
-            
-                    .footer-img {
-                        margin-left: 10px;
-                        width: 300px;
-                        height: auto;
+    
+                    .email-link p, .phone-link p, .contacts-text p {
+                        margin: 0;
+                        color: var(--color-primary);
+                        font-family: var(--primary-font-family);
+                        letter-spacing: 0.06em;
+                        font-weight: 400;
+                        line-height: 1.15em;
+                        font-size: 20px;
                     }
+    
+            .footer-img {
+                margin-left: 10px;
+                width: 300px;
+                height: auto;
+            }
