@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <div class="container">
-        <main>
+    <main>
+        <div class="background-header">
             <header>
                 <a href="index.html" class="logo">
                     <h1 class="title">Cozy House</h1>
@@ -19,13 +19,15 @@
                 <nav class="nav">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="index.html" class="nav-link">About the shelter</a></li>
-                        <li class="nav-item"><a href="#pets" class="nav-link-select">Our pets</a></li>
+                        <li class="nav-item"><div class="nav-link-select">Our pets</div></li>
                         <li class="nav-item"><a href="index.html#help" class="nav-link">Help the shelter</a></li>
                         <li class="nav-item"><a href="#contacts" class="nav-link">Contacts</a></li>
                     </ul>
                 </nav>
             </header>
+        </div>
 
+        <div class="background-our-pets">
             <section class="our-pets" id="pets">
                 <h2 class="heading">Our friends who<br>are looking for a house</h2>
             
@@ -73,13 +75,13 @@
                 </div>    
 
                 <div class="navigation">
-                    <button class="arrow">
+                    <button class="arrow inactive">
                         <img src="assets/img/icon/two-l.png" alt="icon arrow-left">
                     </button>
-                    <button class="arrow">
+                    <button class="arrow inactive">
                         <img src="assets/img/icon/one-l.png" alt="icon arrow-right">
                     </button>
-                    <button class="arrow-active">
+                    <button class="arrow active">
                         <img src="assets/img/icon/one.png" alt="icon arrow-right">
                     </button>
                     <button class="arrow">
@@ -90,8 +92,10 @@
                     </button>
                 </div>    
             </section>
-        </main>
+        </div>
+    </main>
 
+    <div class="background-footer">
         <footer class="footer">
             <section class="footer-content">
                 <div class="contacts" id="contacts">
