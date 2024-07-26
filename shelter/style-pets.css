@@ -251,6 +251,7 @@ header {
                     background: var(--color-primary-light);
                     border: 2px solid var(--color-primary-light);
                     transition: background 0.5s, border 0.5s;
+                    cursor: pointer;
                 }
 
                 .active {

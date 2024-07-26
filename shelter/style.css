@@ -306,7 +306,8 @@ header {
 
             .arrow:hover {
                 background: var(--color-primary-light);
-                transition: background 0.5s;
+                transition: background 0.5s, transform 0.5s;
+                border: 2px solid var(--color-primary-light);
             }
 
             .arrow img {
