@@ -48,7 +48,9 @@ body {
 }
 
 .background-container-start {
-    background: url("assets/main/img/start-screen-gradient-background.jpg"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+    background: url("assets/img/start-screen-gradient-background.jpg"), 
+        radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), 
+        linear-gradient(0deg, #211f20, #211f20);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,7 +73,9 @@ body {
 }
 
 .background-footer {
-    background: url("assets/main/img/footer-background.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+    background: url("assets/img/footer-gradient-background.png"), 
+        radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%),
+        linear-gradient(0deg, #211f20, #211f20);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -107,7 +111,6 @@ header {
         flex-direction: column;
         justify-content: space-between;
         text-decoration: none;
-        color: inherit;
         cursor: pointer;
     }
 
@@ -122,6 +125,10 @@ header {
             margin: 0;
             letter-spacing: 0.06em;
         }
+
+            .title:hover {
+                color: var(--color-light-s);
+            }        
 
         .subtitile {
             color: var(--color-light-s);
@@ -150,7 +157,6 @@ header {
                 line-height: 24px;
                 font-family: var(--second-family);
                 font-weight: 400;
-                
             }
 
             .nav-link-select {
@@ -217,12 +223,12 @@ header {
             text-align: center;
             line-height: 50px; 
             text-decoration: none;
+            transition: background 0.5s;
         }
 
             .button-start:hover {
                 background: var(--color-primary-light);
                 cursor: pointer;
-                transition: background 0.5s;
             }
 
     .start-image {
@@ -302,11 +308,11 @@ header {
             align-items: center;
             background: none;
             border: 2px solid var(--color-primary);
+            transition: background 0.5s, transform 0.5s;
         }
 
             .arrow:hover {
                 background: var(--color-primary-light);
-                transition: background 0.5s, transform 0.5s;
                 border: 2px solid var(--color-primary-light);
             }
 
@@ -327,7 +333,7 @@ header {
             cursor: pointer;
             text-decoration: none;
             color: inherit;
-            transition: background 0.5s, transform 0.5s;
+            transition: background 0.5s, transform 0.5s, box-shadow 0.5s;
         }
 
         .pet:hover .button-pets {
@@ -337,7 +343,6 @@ header {
 
         .pet:hover {
             box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-            transition: box-shadow 0.5s;
         }
 
             .pet img {
@@ -378,11 +383,11 @@ header {
         letter-spacing: 0.06em;
         font-weight: 400;
         line-height: 1.3em;
+        transition: background 0.5s, border 0.5s;
     }
 
     .button-pets-rest:hover {
         background: var(--color-primary-light);
-        transition: background 0.5s, border 0.5s;
     }
 
     
@@ -427,11 +432,11 @@ header {
                 line-height: 1.15em;
                 color: var(--color-dark-l);
                 text-decoration: none;
+                transition: color 0.5s;
             }
 
                 .help-items a:hover {
                     color: var(--color-dark-3xl);
-                    transition: color 0.5s;
                 }
 
 
@@ -510,13 +515,12 @@ height: 350px;
         justify-content: space-between;
         flex-direction: row;
         align-items: flex-start;
-        height: 350px;
     }
 
         .contacts {
             display: flex;
             flex-direction: column;
-            color: var(--color-light-xl);
+            
             height: 234px;
             justify-content: space-between;
             padding-top: 20px;
@@ -527,6 +531,7 @@ height: 350px;
                 line-height: 1.3em;
                 font-size: 35px;
                 margin: 0;
+                color: var(--color-light-xl);
             }
 
             .email-link, .phone-link, .contacts-text {
@@ -534,7 +539,11 @@ height: 350px;
                 align-items: center;
                 flex-direction: row;
                 text-decoration: none;
-                color: inherit;
+                color: var(--color-primary);
+            }
+
+            .email-link:hover, .phone-link:hover, .contacts-text:hover {
+                color: var(--color-light-xl);
             }
 
                 .email-link img, .phone-link img, .contacts-text img {
@@ -545,7 +554,6 @@ height: 350px;
 
                 .email-link p, .phone-link p, .contacts-text p {
                     margin: 0;
-                    color: var(--color-primary);
                     font-family: var(--primary-font-family);
                     letter-spacing: 0.06em;
                     font-weight: 400;
