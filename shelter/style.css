@@ -483,6 +483,10 @@ header {
             box-sizing: border-box;
         }
 
+            .donation-cart:hover {
+                background: var(--color-primary-light);
+            }
+
             .donation-cart a {
                 font-family: var(--primary-font-family);
                 letter-spacing: 0.06em;
