@@ -36,6 +36,16 @@ body {
     font-family: var(--secondary-font-family);
     font-weight: 400;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+    .section-header {
+        gap: 20%;
+    }
 }
 
 .background-container-start,
@@ -56,21 +66,10 @@ body {
     background-repeat: no-repeat;
 }
 
-.background-about {
-    background: var(--color-light-xl);
-}
-
-.background-our-pets {
-    background: var(--color-light-l);
-}
-
-.background-section-help {
-    background: var(--color-light-xl);
-}
-
-.background-section-donation {
-    background: var(--color-light-l);
-}
+.background-about {background: var(--color-light-xl);}
+.background-our-pets {background: var(--color-light-l);}
+.background-section-help {background: var(--color-light-xl);}
+.background-section-donation {background: var(--color-light-l);}
 
 .background-footer {
     background: url("assets/img/footer-gradient-background.png"), 
@@ -81,8 +80,8 @@ body {
     background-repeat: no-repeat;
 }
 
-header, .section-start-content, .about, .our-pets, .section-help, .section-donation, .footer {
-    width: 1280px;
+.section-header, .section-start-content, .section-about, .section-our-pets, .section-help, .section-donation, .section-footer {
+    width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -99,19 +98,21 @@ h1, h2, h3 {
     margin: 15px 0 0 0;
 }
 
-header {
+.section-header {
     padding: 30px 40px 40px 40px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    gap: 30%;
 }
 
     .logo {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         text-decoration: none;
         cursor: pointer;
+        
     }
 
         .logo p {
@@ -181,7 +182,7 @@ header {
 .section-start-content {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     height: 100%;
     padding: 46px 40px 0 40px;
 }
@@ -241,7 +242,7 @@ header {
     }
 
 
-.about {
+.section-about {
     display: flex;
     justify-content: center;
     flex-direction: row; 
@@ -274,7 +275,7 @@ header {
         }
 
 
-.our-pets {
+.section-our-pets {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -399,6 +400,7 @@ header {
     justify-content: center;
     flex-direction: column;
     height: 611px;
+    
 }
 
     .section-help h2.heading {
@@ -449,7 +451,7 @@ header {
 
     .donation-content {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         padding-right: 22px;
     }
@@ -511,14 +513,14 @@ header {
             }
 
 
-.footer {
+.section-footer {
 padding: 40px 40px 0 40px;
 height: 350px;
 }
 
     .footer-content {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         flex-direction: row;
         align-items: flex-start;
     }
@@ -526,7 +528,7 @@ height: 350px;
         .contacts {
             display: flex;
             flex-direction: column;
-            
+            margin-right: 50px;
             height: 234px;
             justify-content: space-between;
             padding-top: 20px;
