@@ -124,6 +124,7 @@ header {
             font-size: 32px;
             margin: 0;
             letter-spacing: 0.06em;
+            transition: color 0.5s;
         }
 
             .title:hover {
@@ -481,6 +482,7 @@ header {
             height: 43px;
             padding-left: 15px;
             box-sizing: border-box;
+            transition: background 0.5s;
         }
 
             .donation-cart:hover {
@@ -546,6 +548,7 @@ height: 350px;
                 flex-direction: row;
                 text-decoration: none;
                 color: var(--color-primary);
+                transition: color 0.5s;
             }
 
             .email-link:hover, .phone-link:hover, .contacts-text:hover {

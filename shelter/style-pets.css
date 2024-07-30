@@ -96,6 +96,7 @@ header {
             font-size: 32px;
             margin: 0;
             letter-spacing: 0.06em;
+            transition: color 0.5s;
         }
 
             .title:hover {
@@ -319,6 +320,7 @@ header {
                 text-decoration: none;
                 color: inherit;
                 color: var(--color-primary);
+                transition: color 0.5s;
             }
 
                 .email-link:hover, .phone-link:hover, .contacts-text:hover {
