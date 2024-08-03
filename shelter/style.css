@@ -99,12 +99,6 @@ h1, h2, h3 {
     max-width: 1280px;
 }
 
-@media (max-width: 1000px) {
-    .section-header {
-        padding: 30px;
-    }
-}
-
     .logo {
         display: flex;
         flex-direction: column;
@@ -140,22 +134,13 @@ h1, h2, h3 {
 
     .nav {
         display: flex;
-        justify-content: flex-end;
     }
 
     .nav-list {
         display: flex;
-        flex-direction: row; 
         list-style-type: none;
+        column-gap: 35px;
     }
-
-        .nav-item:not(:last-child) {
-            margin-right: 35px;
-        }
-
-        @media (max-width: 768px) {
-
-        }
 
             .nav-link, .nav-link-select {
                 text-decoration: none;
@@ -189,15 +174,6 @@ h1, h2, h3 {
                     display: none;
                 }
 
-                @media (max-width: 767px) {
-                    .nav-list {
-                        display: none;
-                    }
-                    .nav-button {
-                        display: block;
-                    }
-                }
-
 
 /*----------------------------------- START CONTENT -----------------------------------*/
 
@@ -207,14 +183,6 @@ h1, h2, h3 {
     flex-wrap: wrap;
     max-width: 1280px;
     gap: 3.5%;
-}
-
-@media (max-width: 1279px) {
-    .section-start-content {
-        flex-direction: column;
-        align-items: center;
-        padding: 30px 40px 0 40px;
-    }
 }
 
     .start-content {
@@ -259,36 +227,22 @@ h1, h2, h3 {
             transition: background 0.5s;
         }
 
-        @media (max-width: 1000px) {
-            .button-start {
-                margin-left: 125px;
-            }
-        }
-
             .button-start:hover {
                 background: var(--color-primary-light);
                 cursor: pointer;
             }
 
     .start-image {
-        max-width: 60%;
+        max-width: 569px;
         height: auto;
     }
-    
 
-    @media (max-width: 1000px) {
-        .start-image {
-            margin-top: 100px;
-            align-self: flex-end;
-        }
-    }
 
 /*----------------------------------- ABOUT THE SHELTER -----------------------------------*/
 
 .section-about {
     display: flex;
     padding: 80px 40px 100px 40px;
-    /*max-width: 1280px;*/
 }
 
     .about-content {
@@ -297,27 +251,12 @@ h1, h2, h3 {
         justify-content: center;
         align-items: center;
         gap: 8%;
-    }
-
-    @media (max-width: 1000px) {
-        .section-about {
-            padding: 80px 30px 100px 30px;
-        }
-        .about-content {
-            flex-direction: column-reverse;
-            align-items: center;
-        }
+        flex-wrap: wrap;
     }
 
         .about img {
             max-width: 40%;
             height: auto;
-        }
-
-        @media (max-width: 1200px) {
-            .about img {
-            
-            }
         }
 
         .about-content-text {
@@ -326,16 +265,10 @@ h1, h2, h3 {
             color: var(--color-dark-l);
             max-width: 30%;
         }
+        
 
         .about-content-text > *:not(:last-child) {
             margin: 0 0 25px 0;
-        }
-
-        @media (max-width: 1000px) {
-            .about-content-text {
-                max-width: 430px;
-                margin-bottom: 80px;
-            }
         }
 
             .about h2.heading {
@@ -380,12 +313,6 @@ h1, h2, h3 {
         justify-content: space-between;
     }
 
-
-    @media (max-width: 1200px) {
-        .pets-cart .pet:nth-last-child(1) {
-            display: none;
-        }
-    }
         .arrow {
             width: 52px;
             height: 52px;
@@ -453,7 +380,7 @@ h1, h2, h3 {
                 padding: 14px 45px;
                 background: none;
                 border: 2px solid var(--color-primary);
-                width: 187px;
+                max-width: 187px;
                 height: 52px;
                 letter-spacing: 0.03em;
                 font-family: var(--primary-font-family);
@@ -543,12 +470,6 @@ h1, h2, h3 {
         align-items: center;
         justify-content: center;
         gap: 2%;
-    }
-
-    @media (max-width: 1000px) {
-        .donation-content {
-            flex-direction: column-reverse;
-        }
     }
 
         .content {
