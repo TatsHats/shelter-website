@@ -233,7 +233,7 @@ h1, h2, h3 {
             }
 
     .start-image {
-        max-width: 569px;
+        max-width: 100%;
         height: auto;
     }
 
@@ -250,7 +250,7 @@ h1, h2, h3 {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 8%;
+        gap: 10%;
         flex-wrap: wrap;
     }
 
@@ -263,7 +263,7 @@ h1, h2, h3 {
             display: flex;
             flex-direction: column;
             color: var(--color-dark-l);
-            max-width: 30%;
+            max-width: 36%;
         }
         
 
@@ -305,7 +305,6 @@ h1, h2, h3 {
     .slider {
         display: flex;
         align-items: center;
-        
     }
 
     .pets-cart {
@@ -534,14 +533,15 @@ h1, h2, h3 {
 .section-footer {
 padding: 40px 40px 0 40px;
 max-width: 1280px;
+display: flex;
+justify-content: space-between;
 }
 
     .footer-content {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         flex-direction: row;
-        flex-wrap: wrap;
-        gap: 13%;
+        gap: 24%;
     }
 
         .contacts {
@@ -550,10 +550,12 @@ max-width: 1280px;
             justify-content: space-between;
             align-content: space-between;
             padding: 18px 0 60px 0;
+            max-width: 295px;
+            min-width: 295px;
         }
 
         .contacts > *:not(:last-child) {
-            margin: 0 0 10% 0;
+            margin: 0 0 4% 0;
         }
 
             .footer-content h3 {
@@ -580,7 +582,7 @@ max-width: 1280px;
                 .email-link img, .phone-link img, .contacts-text img {
                         width: auto;
                         height: auto;
-                        margin-right: 20px;
+                        margin-right: 17px;
                 }
 
                 .email-link p, .phone-link p, .contacts-text p {
@@ -593,8 +595,8 @@ max-width: 1280px;
                 }
 
         .footer-img {
-            margin-left: 10px;
             max-width: 300px;
             height: auto;
             align-items: center;
+            margin-left: 15px;
         }
