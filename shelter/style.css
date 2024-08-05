@@ -2,7 +2,6 @@
     font-family: 'Arial';
     src: url('assets/fonts/arial/arial-regular.ttf') format('truetype');
 }
-
 @font-face {
     font-family: 'Georgia';
     src: url('assets/fonts/georgia/georgia-regular.ttf') format('truetype');
@@ -36,6 +35,10 @@ body {
     font-family: var(--secondary-font-family);
     font-weight: 400;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .background-container-start,
@@ -55,23 +58,10 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
-
-.background-about {
-    background: var(--color-light-xl);
-}
-
-.background-our-pets {
-    background: var(--color-light-l);
-}
-
-.background-section-help {
-    background: var(--color-light-xl);
-}
-
-.background-section-donation {
-    background: var(--color-light-l);
-}
-
+.background-about {background: var(--color-light-xl);}
+.background-our-pets {background: var(--color-light-l);}
+.background-section-help {background: var(--color-light-xl);}
+.background-section-donation {background: var(--color-light-l);}
 .background-footer {
     background: url("assets/img/footer-gradient-background.png"), 
         radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%),
@@ -81,8 +71,8 @@ body {
     background-repeat: no-repeat;
 }
 
-header, .section-start-content, .about, .our-pets, .section-help, .section-donation, .footer {
-    width: 1280px;
+.section-header, .section-start-content, .section-about, .section-our-pets, .section-help, .section-donation, .section-footer {
+    width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -99,17 +89,19 @@ h1, h2, h3 {
     margin: 15px 0 0 0;
 }
 
-header {
-    padding: 30px 40px 40px 40px;
+/*----------------------------------- HEADER -----------------------------------*/
+
+.section-header {
+    padding: 30px 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    max-width: 1280px;
 }
 
     .logo {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         text-decoration: none;
         cursor: pointer;
     }
@@ -131,7 +123,7 @@ header {
                 color: var(--color-light-s);
             }        
 
-        .subtitile {
+        .subtitle {
             color: var(--color-light-s);
             font-size: 13px;
             letter-spacing: 0.1em;
@@ -140,15 +132,15 @@ header {
             margin-left: 2px !important;
         }
 
-    .nav-list {
+    .nav {
         display: flex;
-        flex-direction: row; 
-        list-style-type: none;
     }
 
-        .nav-item {
-            margin-left: 35px;
-        }
+    .nav-list {
+        display: flex;
+        list-style-type: none;
+        column-gap: 35px;
+    }
 
             .nav-link, .nav-link-select {
                 text-decoration: none;
@@ -161,8 +153,8 @@ header {
             }
 
             .nav-link-select {
-                border-bottom: 4px solid #f1cdb3;
-                padding-bottom: 2px;
+                border-bottom: 3px solid #f1cdb3;
+                padding-bottom: 1px;
                 color: var(--color-light-s);
                 pointer-events: none;
                 cursor: default;
@@ -178,23 +170,34 @@ header {
                     transition: color 0.5s;
                 }
 
+                .nav-button {
+                    display: none;
+                }
+
+
+/*----------------------------------- START CONTENT -----------------------------------*/
 
 .section-start-content {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 100%;
-    padding: 46px 40px 0 40px;
+    padding: 60px 40px 0 40px;
+    flex-wrap: wrap;
+    max-width: 1280px;
+    gap: 3.5%;
 }
 
     .start-content {
         display: flex;
         align-items: start;
         flex-direction: column;
-        width: 460px;
         color: var(--color-light-s);
-        margin-top: 150px;
         font-size: 15px;
+        box-sizing: border-box;
+        max-width: 460px;
+        margin-top: 161px;
+    }
+
+    .start-content > *:not(:last-child) {
+        margin: 0 0 42px 0;
     }
 
         .start-content h2.heading {
@@ -206,7 +209,6 @@ header {
 
         .start-content p {
             margin: 0;
-            margin-top: 40px;
             line-height: 1.6em;
         }
 
@@ -216,9 +218,7 @@ header {
             border-radius: 50px;
             font-size: 17px;
             border: none; 
-            margin-top: 42px;
-            width: 207px;
-            height: 52px;
+            padding: 0 46px;
             font-family: var(--primary-font-family);
             letter-spacing: 0.05em;
             text-align: center;
@@ -233,70 +233,83 @@ header {
             }
 
     .start-image {
-        width: 698px;
+        max-width: 100%;
         height: auto;
-        position: relative;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
     }
 
 
-.about {
+/*----------------------------------- ABOUT THE SHELTER -----------------------------------*/
+
+.section-about {
     display: flex;
-    justify-content: center;
-    flex-direction: row; 
     padding: 80px 40px 100px 40px;
-    height: 588px;
 }
-
-    .about img {
-        width: 300px;
-        height: 408px;
-        margin-right: 125px;
-    }
 
     .about-content {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        color: var(--color-dark-l);
-        margin: 0 13px 14px 0;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        flex-wrap: wrap;
     }
 
-        .about h2.heading {
-            text-align: left;
+        .about img {
+            max-width: 40%;
+            height: auto;
         }
 
-        .about-content p {
-            line-height: 24px;
-            font-size: 15px;
-            margin: 0;
+        .about-content-text {
+            display: flex;
+            flex-direction: column;
+            color: var(--color-dark-l);
+            max-width: 36%;
+        }
+        
+
+        .about-content-text > *:not(:last-child) {
+            margin: 0 0 25px 0;
         }
 
+            .about h2.heading {
+                text-align: left;
+            }
 
-.our-pets {
+            .about-content-text p {
+                line-height: 24px;
+                font-size: 15px;
+                margin: 0;
+            }
+
+/*----------------------------------- OUR PETS -----------------------------------*/
+
+.section-our-pets {
     display: flex;
     align-items: center;
+    text-align: center;
     flex-direction: column;
     padding: 80px 40px 100px 40px;
-    height: 877px;
+    max-width: 1280px;
+}
+
+.section-our-pets > *:not(:last-child) {
+    margin: 0 0 60px 0;
 }
 
     .our-pets h2.heading {
-        text-align: center;
         letter-spacing: 0.06em;
         line-height: 1.3em;
         font-size: 35px;
-        margin: 0;
     }
 
     .slider {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        width: 100%;
-        margin-top: 60px;
+    }
+
+    .pets-cart {
+        display: flex;
+        justify-content: space-between;
     }
 
         .arrow {
@@ -312,11 +325,16 @@ header {
             transition: background 0.5s, transform 0.5s;
         }
 
+            .arrow-left {
+                margin-right: 8px;
+            }
+            .arrow-right {
+                margin-left: 8px;
+            }
             .arrow:hover {
                 background: var(--color-primary-light);
                 border: 2px solid var(--color-primary-light);
             }
-
             .arrow img {
                 width: 14px;
                 height: 6px;
@@ -326,33 +344,30 @@ header {
             display: flex;
             flex-direction: column;
             align-items: center;
+            flex-shrink: 0;
             background: var(--color-light-s);
             border-radius: 9px;
-            width: 270px;
-            height: 435px;
-            margin: 0 45px;
             cursor: pointer;
             text-decoration: none;
             color: inherit;
+            padding-bottom: 30px;
+            margin: 0 45px;
             transition: background 0.5s, transform 0.5s, box-shadow 0.5s;
         }
-
         .pet:hover .button-pets {
             background: var(--color-primary-light);
             border: 2px solid var(--color-primary-light);
         }
-
         .pet:hover {
             box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
         }
 
             .pet img {
-                width: 100%;
+                max-width: 270px;
                 height: auto;
             }
-
             .pet p {
-                margin: 30px 0;
+                margin: 28px 0;
                 font-size: 20px;
                 letter-spacing: 0.06em;
                 font-family: var(--primary-font-family);
@@ -364,7 +379,7 @@ header {
                 padding: 14px 45px;
                 background: none;
                 border: 2px solid var(--color-primary);
-                width: 187px;
+                max-width: 187px;
                 height: 52px;
                 letter-spacing: 0.03em;
                 font-family: var(--primary-font-family);
@@ -379,7 +394,6 @@ header {
         cursor: pointer;
         font-size: 17px;
         padding: 15px 45px;
-        margin: 60px 0 0 0;
         font-family: var(--primary-font-family);
         letter-spacing: 0.06em;
         font-weight: 400;
@@ -388,18 +402,18 @@ header {
         text-decoration: none;
         color: inherit;
     }
-
     .button-pets-rest:hover {
         background: var(--color-primary-light);
     }
 
-    
+/*----------------------------------- HELP -----------------------------------*/
+
 .section-help {
-    padding: 70px 40px 45px 40px;
+    padding: 65px 40px 45px 40px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 611px;
+    max-width: 1280px;
 }
 
     .section-help h2.heading {
@@ -412,13 +426,14 @@ header {
         justify-content: center;
         flex-wrap: wrap;
         margin: 60px 30px 0 30px;
+        gap: 10.5%;
     }
 
         .help-items {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 59px 55px 59px;
+            margin-bottom: 55px;
         }
 
             .help-items img {
@@ -442,30 +457,37 @@ header {
                     color: var(--color-dark-3xl);
                 }
 
+/*----------------------------------- DONATION -----------------------------------*/
 
 .section-donation {
-    padding: 80px 182px 90px 183px;
-    height: 462px;
+    padding: 80px 40px;
+    max-width: 1280px;
 }
 
     .donation-content {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding-right: 22px;
+        justify-content: center;
+        gap: 2%;
     }
 
-        .donation-content img {
-            width: 505px;
-            height: 261px;
+        .content {
+            max-width: 380px;
+            min-width: 380px;
+            padding: 0 21px 5px 0;
+            box-sizing: border-box;
         }
 
-        .content h2.heading {
+        .content > *:not(:last-child) {
             margin: 0 0 20px 0;
+        }
+
+        .donation-content img {
+            max-width: 505px;
+            height: auto;
         }
 
         .subheading {
-            margin: 0 0 20px 0;
             font-family: var(--primary-font-family);
             letter-spacing: 0.06em;
             font-size: 15px;
@@ -474,14 +496,9 @@ header {
 
         .donation-cart {
             display: flex;
-            flex-direction: row;
-            align-items: center;
             background: var(--color-primary);
             border-radius: 10px;
-            width: 349px;
-            height: 43px;
-            padding-left: 15px;
-            box-sizing: border-box;
+            padding: 10px 15px;
             transition: background 0.5s;
         }
 
@@ -505,33 +522,40 @@ header {
                 height: 23px;
             }
 
-            .section-donation-text {
+            .content p {
                 font-size: 12px;
                 font-style: italic;
                 line-height: 1.5em;
-                margin-top: 20px;
             }
 
+/*----------------------------------- FOOTER -----------------------------------*/
 
-.footer {
+.section-footer {
 padding: 40px 40px 0 40px;
-height: 350px;
+max-width: 1280px;
+display: flex;
+justify-content: space-between;
 }
 
     .footer-content {
         display: flex;
         justify-content: space-between;
         flex-direction: row;
-        align-items: flex-start;
+        gap: 24%;
     }
 
         .contacts {
             display: flex;
             flex-direction: column;
-            
-            height: 234px;
             justify-content: space-between;
-            padding-top: 20px;
+            align-content: space-between;
+            padding: 18px 0 60px 0;
+            max-width: 295px;
+            min-width: 295px;
+        }
+
+        .contacts > *:not(:last-child) {
+            margin: 0 0 4% 0;
         }
 
             .footer-content h3 {
@@ -558,7 +582,7 @@ height: 350px;
                 .email-link img, .phone-link img, .contacts-text img {
                         width: auto;
                         height: auto;
-                        margin-right: 20px;
+                        margin-right: 17px;
                 }
 
                 .email-link p, .phone-link p, .contacts-text p {
@@ -571,7 +595,8 @@ height: 350px;
                 }
 
         .footer-img {
-            margin-left: 10px;
-            width: 300px;
+            max-width: 300px;
             height: auto;
+            align-items: center;
+            margin-left: 15px;
         }
