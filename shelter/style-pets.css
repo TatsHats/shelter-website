@@ -35,6 +35,11 @@ body {
     padding: 0;
     font-family: var(--secondary-font-family);
     font-weight: 400;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .background-header,
@@ -59,8 +64,8 @@ body {
     background-repeat: no-repeat;
 }
 
-header, .our-pets, .footer {
-    width: 1280px;
+.section-header, .section-our-pets, .section-footer {
+    max-width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -70,11 +75,14 @@ h1, h2, h3 {
     font-weight: 400;
 }
 
-header {
-    padding: 30px 40px 30px 40px;
+/*----------------------------------- HEADER -----------------------------------*/
+
+.section-header {
+    padding: 30px 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    max-width: 1280px;
 }
 
     .logo {
@@ -112,8 +120,11 @@ header {
             margin-left: 5px !important;
         }
 
-    .nav-list {
+    .nav {
+        display: flex;
+    }
 
+    .nav-list {
         display: flex;
         flex-direction: row; 
         list-style-type: none;
@@ -150,15 +161,20 @@ header {
                     cursor: pointer;
                 }
 
+                .nav-button {
+                    display: none;
+                }
 
-.our-pets {
+/*----------------------------------- OUR PETS -----------------------------------*/
+
+.section-our-pets {
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 80px 40px 100px 40px;
 }
 
-    .our-pets h2.heading {
+    .section-our-pets h2.heading {
         text-align: center;
         letter-spacing: 0.06em;
         line-height: 1.3em;
@@ -171,7 +187,6 @@ header {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        width: 100%;
         margin-top: 55px;
         padding: 0;
         color: var(--color-dark-l);
@@ -183,7 +198,7 @@ header {
             align-items: center;
             background: var(--color-light-s);
             border-radius: 9px;
-            width: 270px;
+            max-width: 270px;
             height: 435px;
             margin-bottom: 30px;
             cursor: pointer;
@@ -215,8 +230,8 @@ header {
                 background: none;
                 border: 2px solid var(--color-primary);
                 color: var(--color-dark-3xl);
-                width: 187px;
-                height: 52px;
+                max-width: 187px;
+                height: auto;
                 letter-spacing: 0.03em;
                 font-family: var(--primary-font-family);
                 box-sizing: border-box;
@@ -284,66 +299,75 @@ header {
                         background: none;
                     }
 
+/*----------------------------------- FOOTER -----------------------------------*/
 
-.footer {
-    height: 350px;
+.section-footer {
     padding: 40px 40px 0 40px;
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-between;
     }
     
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-        .contacts {
+        .footer-content {
             display: flex;
-            flex-direction: column;
-            height: 234px;
             justify-content: space-between;
-            padding: 20px 0 0 0;
+            flex-direction: row;
+            gap: 24%;
         }
-
-            .footer-content h3 {
-                letter-spacing: 0.06em;
-                line-height: 1.3em;
-                font-size: 35px;
-                margin: 0;
-                color: var(--color-light-xl);
-            }
-
-            .email-link, .phone-link, .contacts-text {
+    
+            .contacts {
                 display: flex;
-                align-items: center;
-                flex-direction: row;
-                text-decoration: none;
-                color: inherit;
-                color: var(--color-primary);
-                transition: color 0.5s;
+                flex-direction: column;
+                justify-content: space-between;
+                align-content: space-between;
+                padding: 18px 0 60px 0;
+                max-width: 295px;
+                min-width: 295px;
             }
-
+    
+            .contacts > *:not(:last-child) {
+                margin: 0 0 4% 0;
+            }
+    
+                .footer-content h3 {
+                    letter-spacing: 0.06em;
+                    line-height: 1.3em;
+                    font-size: 35px;
+                    margin: 0;
+                    color: var(--color-light-xl);
+                }
+    
+                .email-link, .phone-link, .contacts-text {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    text-decoration: none;
+                    color: var(--color-primary);
+                    transition: color 0.5s;
+                }
+    
                 .email-link:hover, .phone-link:hover, .contacts-text:hover {
                     color: var(--color-light-xl);
                 }
-
-                .email-link img, .phone-link img, .contacts-text img {
-                        width: auto;
-                        height: auto;
-                        margin-right: 20px;
-                }
-
-                .email-link p, .phone-link p, .contacts-text p {
-                    margin: 0;
-                    font-family: var(--primary-font-family);
-                    letter-spacing: 0.06em;
-                    font-weight: 400;
-                    line-height: 1.15em;
-                    font-size: 20px;
-                }
-
-        .footer-img {
-            margin-left: 10px;
-            width: 300px;
-            height: auto;
-        }
+    
+                    .email-link img, .phone-link img, .contacts-text img {
+                            width: auto;
+                            height: auto;
+                            margin-right: 17px;
+                    }
+    
+                    .email-link p, .phone-link p, .contacts-text p {
+                        margin: 0;
+                        font-family: var(--primary-font-family);
+                        letter-spacing: 0.06em;
+                        font-weight: 400;
+                        line-height: 1.15em;
+                        font-size: 20px;
+                    }
+    
+            .footer-img {
+                max-width: 300px;
+                height: auto;
+                align-items: center;
+                margin-left: 15px;
+            }
