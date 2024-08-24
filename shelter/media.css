@@ -413,4 +413,46 @@
 }
 
 
-/*----------------------------------- MOBILE NAV -----------------------------------*/
+/*----------------------------------- POPUP -----------------------------------*/
+
+@media (max-width: 1000px) {
+    .popup-content {
+        max-width: 630px;
+        max-height: 350px;
+    }
+    
+    .text-popup {
+        max-width: 257px;
+        margin: 0 13px 0 0;
+        letter-spacing: 0.07em;
+    }
+
+        .text-popup h3 {
+            margin: 12px 0 0 0;
+        }
+
+    #popup-pet-description {
+        font-size: 12px;
+        margin: 20px 0 10px 0;
+        line-height: 1.2;
+    }
+
+    #popup-pet-type {
+        margin: 10px 0;
+    }
+
+    #popup-pet-details {
+        padding-left: 15px;
+        line-height: 1.45;
+    }
+}
+
+@media (max-width: 700px) {
+    .popup-content {
+        max-width: 240px;
+        max-height: 341px;
+    }
+    .popup-content img {
+        display: none;
+    }
+}

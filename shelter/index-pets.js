@@ -1,17 +1,18 @@
 /*----------------------------------- MENU BURGER -----------------------------------*/
+
 const iconMenu = document.querySelector('.menu-icon');
 if (iconMenu) {
     const menuBody = document.querySelector('.mobile-nav');
     const fadeBackground = document.querySelector('.mobile-nav-fade');
     const menuLinks = document.querySelectorAll('.mobile-nav-list a');
     const firstMenuItem = document.querySelector('.mobile-nav-link-select');
-    
+
     // Обработчик клика на иконке меню
     iconMenu.addEventListener("click", function () {
         document.body.classList.toggle('lock');
         iconMenu.classList.toggle('active');
         menuBody.classList.toggle('active');
-        fadeBackground.classList.toggle('active');
+        fadeBackground.classList.toggle('active'); // Показать/скрыть подложку
     });
 
     // Обработчик клика на подложке
@@ -161,7 +162,6 @@ function closePopup() {
     document.body.classList.remove('lock');
     fadeBackground.classList.remove('active');
 }
-
 // Добавление обработчика события на каждую карточку питомца
 petsCart.addEventListener('click', (event) => {
     const petCard = event.target.closest('.pet');
@@ -181,3 +181,20 @@ popup.addEventListener('click', (event) => {
         closePopup();
     }
 });
+
+
+/*----------------------------------- SLIDER -----------------------------------*/
+
+const petsForArray = [
+    { name: 'Katrine', img: 'assets/img/katrine.png' },
+    { name: 'Jennifer', img: 'assets/img/jennifer.png' },
+    { name: 'Woody', img: 'assets/img/woody.png' },
+    { name: 'Sophia', img: 'assets/img/sophia.png' },
+    { name: 'Timmy', img: 'assets/img/timmy.png' },
+    { name: 'Charly', img: 'assets/img/charly.png' },
+    { name: 'Scarlett', img: 'assets/img/scarlett.png' },
+    { name: 'Freddie', img: 'assets/img/freddie.png' },
+];
+
+// массив из 48 элементов:
+const fullPetsArray = [...Array(6)].flatMap(() => petsForArray);

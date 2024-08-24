@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'Arial';
-    src: url('assets/fonts/arial/arial-regular.ttf') format('truetype');
+    src: url('fonts/arial/arial-regular.ttf') format('truetype');
 }
 @font-face {
     font-family: 'Georgia';
-    src: url('assets/fonts/georgia/georgia-regular.ttf') format('truetype');
+    src: url('fonts/georgia/georgia-regular.ttf') format('truetype');
 }
 
 :root {
@@ -308,6 +308,8 @@ h1, h2, h3 {
     .pets-cart {
         display: flex;
         justify-content: space-between;
+        transition: transform 0.5s ease-in-out;
+        overflow: hidden;
     }
 
         .arrow {
@@ -673,4 +675,96 @@ justify-content: space-between;
         color: var(--color-light-s);
         cursor: pointer;
         transition: color 0.5s;
+    }
+
+    
+/*----------------------------------- POPUP -----------------------------------*/
+
+    .popup.hidden {
+        display: none;
+    }
+    
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        font-family: var(--primary-font-family);
+        letter-spacing: 0.06em;
+        line-height: 1.3;
+    }
+    
+    .popup-content {
+        position: relative;
+        background-color: #fafafa;
+        border-radius: 10px;
+        max-width: 900px;
+        max-height: 500px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .popup-close {
+        position: absolute;
+        top: -50px;
+        right: -42px;
+        font-size: 26px;
+        cursor: pointer;
+        border-radius: 50px;
+        padding: 7px 15px;
+        display: flex;
+        align-items: center;
+        background: none;
+        border: 2px solid var(--color-primary);
+        transition: background 0.5s, transform 0.5s;
+    }
+
+    .text-popup {
+        max-width: 355px;
+        margin: 0 17px 0 32px;
+    }
+
+        .text-popup h3 {
+            font-size: 35px;
+            margin: 50px 0 0 0;
+            letter-spacing: 0.07em;
+        }
+
+
+    #popup-pet-description {
+        font-size: 15px;
+        color: var(--color-dark-3xl);
+        line-height: 1.1;
+        margin: 45px 0 35px 0;
+        
+    }
+
+    #popup-pet-type {
+        font-size: 20px;
+        margin: 10px 0;
+        line-height: 1;
+        letter-spacing: 0.07em;
+    }
+
+    #popup-pet-details li::marker {
+        color: var(--color-primary);
+    }
+
+    #popup-pet-details {
+        line-height: 1.75;
+        padding-left: 15px;
+        letter-spacing: 0.03em;
+    }
+
+    .popup-content img {
+        width: 500px;
+        height: auto;
+        border-radius: 10px;
     }
