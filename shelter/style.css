@@ -40,6 +40,9 @@ body {
     align-items: center;
     box-sizing: border-box;
 }
+body.lock {
+    overflow: hidden;
+}
 
 .background-container-start,
 .background-about,
@@ -169,11 +172,6 @@ h1, h2, h3 {
                     cursor: pointer;
                     transition: color 0.5s;
                 }
-
-                .nav-button {
-                    display: none;
-                }
-
 
 /*----------------------------------- START CONTENT -----------------------------------*/
 
@@ -600,3 +598,79 @@ justify-content: space-between;
             align-items: center;
             margin-left: 15px;
         }
+
+
+
+/*----------------------------------- MOBILE NAV -----------------------------------*/
+
+.mobile-nav-fade, .mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    transition: transform 0.5s ease, right 0.5s ease;
+}
+
+.mobile-nav {
+    background-color: var(--color-dark-3xl);
+    max-width: 320px;
+    transform: translateX(100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .mobile-nav.active {
+        transform: translateX(0);
+    }
+
+    .mobile-nav-fade {
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        display: none;
+        transition: opacity 0.5s ease;
+    }
+
+    .mobile-nav-fade.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .mobile-nav-list {
+        list-style-type: none;
+        font-size: 32px;
+        color: var(--color-dark-s);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin: 257px 38px 0 0;
+    }
+
+    .mobile-nav-list a {
+        text-decoration: none;
+        color: inherit;
+        
+    }
+
+    .mobile-nav-list > *:not(:first-child) {
+        margin-top: 52px;
+    }
+
+    .mobile-nav-link-select {
+        border-bottom: 3px solid #f1cdb3;
+        padding-bottom: 6px;
+        color: var(--color-light-s);
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .mobile-nav-link:hover {
+        color: var(--color-light-s);
+        cursor: pointer;
+        transition: color 0.5s;
+    }
