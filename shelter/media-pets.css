@@ -205,39 +205,56 @@
         max-width: 630px;
         max-height: 350px;
     }
-    
     .text-popup {
         max-width: 257px;
         margin: 0 13px 0 0;
         letter-spacing: 0.07em;
     }
-
-        .text-popup h3 {
-            margin: 12px 0 0 0;
-        }
-
+    .text-popup h3 {
+        margin: 12px 0 0 0;
+    }
     #popup-pet-description {
         font-size: 12px;
         margin: 20px 0 10px 0;
         line-height: 1.2;
     }
-
     #popup-pet-type {
         margin: 10px 0;
     }
-
     #popup-pet-details {
         padding-left: 15px;
         line-height: 1.45;
     }
+    .popup-content img {
+        max-width: 350px;
+    }
+    
 }
 
-@media (max-width: 700px) {
+@media (max-width: 767px) {
     .popup-content {
         max-width: 240px;
         max-height: 341px;
+        text-align: center;
+        padding-left: 10px;
+    }
+    .text-popup {
+        margin: 0 7px 0 0;
     }
     .popup-content img {
         display: none;
+    }
+    #popup-pet-description {
+        font-size: 12px;
+        line-height: 1.2;
+        text-align: justify;
+        margin: 20px 0 20px 0;
+    }
+    #popup-pet-details {
+        text-align: left;
+    }
+    .popup-close {
+        top: -52px;
+        right: -22px;
     }
 }

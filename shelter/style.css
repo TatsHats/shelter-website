@@ -61,10 +61,12 @@ body.lock {
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .background-about {background: var(--color-light-xl);}
 .background-our-pets {background: var(--color-light-l);}
 .background-section-help {background: var(--color-light-xl);}
 .background-section-donation {background: var(--color-light-l);}
+
 .background-footer {
     background: url("assets/img/footer-gradient-background.png"), 
         radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%),
@@ -99,7 +101,7 @@ h1, h2, h3 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1280px;
+    max-width: 1279px;
 }
 
     .logo {
@@ -287,7 +289,7 @@ h1, h2, h3 {
     text-align: center;
     flex-direction: column;
     padding: 80px 40px 100px 40px;
-    max-width: 1280px;
+    max-width: 1279px;
 }
 
 .section-our-pets > *:not(:last-child) {
@@ -736,7 +738,6 @@ justify-content: space-between;
             margin: 50px 0 0 0;
             letter-spacing: 0.07em;
         }
-
 
     #popup-pet-description {
         font-size: 15px;

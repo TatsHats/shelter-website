@@ -152,7 +152,7 @@ function openPopup(pet) {
     popupParasites.textContent = pet.Parasites;
     popup.classList.remove('hidden');
     document.body.classList.add('lock');
-    fadeBackground.classList.toggle('active'); // Показать/скрыть подложку
+    fadeBackground.classList.toggle('active');
 }
 
 // Закрытие попапа
@@ -180,4 +180,69 @@ popup.addEventListener('click', (event) => {
     if (event.target === popup) {
         closePopup();
     }
+});
+
+
+/*----------------------------------- SLIDER -----------------------------------*/
+const petsContainer = document.querySelector('.pets-cart');
+const pets = Array.from(document.querySelectorAll('.pets-cart .pet'));
+let currentStartIndex = 0;
+
+// отслеживание ширины экрана
+function getVisibleCount() {
+    const width = window.innerWidth;
+    let countCards = 1;
+    if (width >= 1280) countCards = 3;
+    else if (width >= 768) countCards =  2;
+    console.log('Количество карточек:', countCards, 'Ширина экрана: ', width);
+    return countCards;
+}
+
+
+function updateVisibleCards() {
+    const visibleCount = getVisibleCount();
+    console.log('Количество карточек 1:', visibleCount);
+    petsContainer.innerHTML = '';
+
+    for (let i = 0; i < visibleCount; i++) {
+        console.log('i = ', i);
+        const petIndex = (currentStartIndex + i) % pets.length;
+        const petClone = pets[petIndex].cloneNode(true); // клонирование карточек для создания бесконечного слайдера
+        petsContainer.appendChild(petClone);
+    }
+}
+
+
+function updateSlider(direction) {
+    const visibleCount = getVisibleCount();
+    console.log('Количество карточек 2:', visibleCount);
+
+    if (direction === 'next') {
+        currentStartIndex = (currentStartIndex + visibleCount) % pets.length;
+    } else {
+        currentStartIndex = (currentStartIndex - visibleCount + pets.length) % pets.length;
+    }
+
+    updateVisibleCards();
+}
+
+// Обработчики событий для стрелок
+document.querySelector('.arrow-left').addEventListener('click', () => updateSlider('prev'));
+document.querySelector('.arrow-right').addEventListener('click', () => updateSlider('next'));
+
+// Обработчик события изменения размера окна
+window.addEventListener('resize', () => {
+    const oldVisibleCount = getVisibleCount();
+    updateVisibleCards();
+
+    // После изменения размера экрана корректируем currentStartIndex
+    const newVisibleCount = getVisibleCount();
+    if (oldVisibleCount !== newVisibleCount) {
+        currentStartIndex = Math.floor(currentStartIndex / oldVisibleCount) * newVisibleCount;
+    }
+});
+
+// Инициализация слайдера при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    updateVisibleCards();
 });
