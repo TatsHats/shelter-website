@@ -183,8 +183,9 @@ popup.addEventListener('click', (event) => {
 });
 
 
-/*----------------------------------- SLIDER -----------------------------------*/
+/*----------------------------------- PAGINATION -----------------------------------*/
 
+// массив питомцев (всего 8)
 const petsForArray = [
     { name: 'Katrine', img: 'assets/img/katrine.png' },
     { name: 'Jennifer', img: 'assets/img/jennifer.png' },
@@ -196,9 +197,6 @@ const petsForArray = [
     { name: 'Freddie', img: 'assets/img/freddie.png' },
 ];
 
-// массив из 48 элементов:
-const fullPetsArray = [...Array(6)].flatMap(() => petsForArray);
-
 // перемешивание массива:
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -208,41 +206,46 @@ function shuffle(array) {
     return array;
 }
 
-//Разбиение массива на страницы:
+// массив из 48 элементов (массив 8 карточек * 6):
+const fullPetsArray = [];
+for (let i = 0; i < 6; i++) {
+    const shuffledArray = shuffle([...petsForArray]);
+    fullPetsArray.push(...shuffledArray);
+}
+
+// Функция пагинации
 function paginatePets(array, itemsPerPage) {
-    const pages = [];
+    const paginated = [];
     for (let i = 0; i < array.length; i += itemsPerPage) {
-        pages.push(array.slice(i, i + itemsPerPage));
+        paginated.push(array.slice(i, i + itemsPerPage));
     }
-    return pages;
+    return paginated;
 }
 
 // Определяем количество карточек на странице в зависимости от ширины экрана
 // 1280px - 6 стр. по 8 карт., 768px — 8 стр. по 6 карт., 320px — 16 стр. по 3 карт.
 const itemsPerPage = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 6 : 3;
-const paginatedPets = paginatePets(shuffle(fullPetsArray), itemsPerPage);
 
-//Рендеринг карточек питомцев на странице:
+let paginatedPets = paginatePets(fullPetsArray, itemsPerPage);
+
+// Отслеживание текущей страницы:
 let currentPage = 0;
-
 function renderPets(pageNumber) {
     const petsContainer = document.querySelector('.pets-cart');
-    petsContainer.innerHTML = ''; // Очищаем контейнер перед рендером
+    petsContainer.innerHTML = '';
 
     paginatedPets[pageNumber].forEach(pet => {
         const petElement = document.createElement('a');
         petElement.href = `#${pet.name.toLowerCase()}`;
         petElement.classList.add('pet');
-        petElement.innerHTML = `
-            <img src="${pet.img}" alt="Foto ${pet.name}">
-            <p class="name">${pet.name}</p>
-            <span class="button-pets">Learn more</span>
-        `;
+        petElement.innerHTML = `<img src="${pet.img}" alt="Foto ${pet.name}">
+                                <p class="name">${pet.name}</p>
+                                <span class="button-pets">Learn more</span>`;
         petsContainer.appendChild(petElement);
     });
 }
 
-renderPets(currentPage); // Рендерим первую страницу
+renderPets(currentPage);
 
 // Обработка переключения страниц
 document.querySelector('.navigation').addEventListener('click', (e) => {
@@ -254,83 +257,74 @@ document.querySelector('.navigation').addEventListener('click', (e) => {
             currentPage++;
         }
         renderPets(currentPage);
+        updatePage();
     }
 });
 
 /*----------------------------------- NAVIGATION -----------------------------------*/
 
 document.addEventListener('DOMContentLoaded', () => {
-    const currentPageElement = document.querySelector('.current-page p');
-    const firstPageBtn = document.querySelector('.first-page');
-    const prevPageBtn = document.querySelector('.prev-page');
-    const nextPageBtn = document.querySelector('.next-page');
-    const lastPageBtn = document.querySelector('.last-page');
+    const currentPageEl = document.querySelector('.current-page p');
+    const firstPageButton = document.querySelector('.first-page');
+    const prevPageButton = document.querySelector('.prev-page');
+    const nextPageButton = document.querySelector('.next-page');
+    const lastPageButton = document.querySelector('.last-page');
 
-    const totalPages = calculateTotalPages();   
-    function calculateTotalPages() {
-        return window.innerWidth >= 1280 ? 6 : window.innerWidth >= 768 ? 8 : 16;
-    }
-    
-    let currentPage = 1;
+    let totalPages = Math.ceil(48 / itemsPerPage);   
+
     function updatePage() {
-        currentPageElement.textContent = currentPage;
+        currentPageEl.textContent = currentPage + 1;
 
         // Отключение кнопок в зависимости от текущей страницы
-        if (currentPage === 1) {
-            firstPageBtn.classList.add('inactive');
-            prevPageBtn.classList.add('inactive');
+        if (currentPage === 0) {
+            firstPageButton.classList.add('inactive');
+            prevPageButton.classList.add('inactive');
         } else {
-            firstPageBtn.classList.remove('inactive');
-            prevPageBtn.classList.remove('inactive');
+            firstPageButton.classList.remove('inactive');
+            prevPageButton.classList.remove('inactive');
         }
 
-        if (currentPage === totalPages) {
-            nextPageBtn.classList.add('inactive');
-            lastPageBtn.classList.add('inactive');
+        if (currentPage === totalPages - 1) {
+            nextPageButton.classList.add('inactive');
+            lastPageButton.classList.add('inactive');
         } else {
-            nextPageBtn.classList.remove('inactive');
-            lastPageBtn.classList.remove('inactive');
+            nextPageButton.classList.remove('inactive');
+            lastPageButton.classList.remove('inactive');
         }
     }
 
     // Слушатели событий для кнопок
-    firstPageBtn.addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage = 1;
+    firstPageButton.addEventListener('click', () => {
+        if (currentPage > 0) {
+            currentPage = 0;
+            renderPets(currentPage);
             updatePage();
         }
     });
 
-    prevPageBtn.addEventListener('click', () => {
-        if (currentPage > 1) {
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 0) {
             currentPage--;
+            renderPets(currentPage);
             updatePage();
         }
     });
 
-    nextPageBtn.addEventListener('click', () => {
-        if (currentPage < totalPages) {
+    nextPageButton.addEventListener('click', () => {
+        if (currentPage < totalPages - 1) {
             currentPage++;
+            renderPets(currentPage);
             updatePage();
         }
     });
 
-    lastPageBtn.addEventListener('click', () => {
-        if (currentPage < totalPages) {
-            currentPage = totalPages;
+    lastPageButton.addEventListener('click', () => {
+        if (currentPage < totalPages - 1) {
+            currentPage = totalPages - 1;
+            renderPets(currentPage);
             updatePage();
         }
     });
 
-    // Обновление количества страниц при изменении размера окна
-    window.addEventListener('resize', () => {
-        totalPages = calculateTotalPages();
-        if (currentPage > totalPages) {
-            currentPage = totalPages;
-        }
-        updatePage();
-    });
-
-    updatePage(); // Изначальное обновление страницы
+    updatePage();
 });
-
