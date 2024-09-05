@@ -46,64 +46,64 @@
             <section class="section-our-pets" id="pets">
                 <h2 class="heading">Our friends who<br>are looking for a house</h2>
             
-                <div class="cards_container">
-                    <a href="katrine" class="pet">
+                <div class="pets-cart">
+                    <a href="#katrine" class="pet">
                         <img src="assets/img/katrine.png" alt="Foto Katrine">               
                         <p class="name">Katrine</p>
                         <span class="button-pets">Learn more</span>
                     </a>
-                    <a href="jennifer" class="pet">
+                    <a href="#jennifer" class="pet">
                         <img src="assets/img/jennifer.png" alt="Foto Jennifer">               
                         <p class="name">Jennifer</p>
                         <span class="button-pets">Learn more</span>
                     </a>
-                    <a href="woody" class="pet">
-                        <img src="assets/img/woody.png" alt="Foto  Woody">               
+                    <a href="#woody" class="pet">
+                        <img src="assets/img/woody.png" alt="Foto Woody">               
                         <p class="name">Woody</p>
                         <span class="button-pets">Learn more</span>
                     </a>
-                    <a href="Sophia" class="pet">
-                        <img src="assets/img/sophia.png" alt="Foto  Sophia">               
+                    <a href="#Sophia" class="pet">
+                        <img src="assets/img/sophia.png" alt="Foto Sophia">               
                         <p class="name">Sophia</p>
                         <span class="button-pets">Learn more</span>
                     </a>
-                    <a href="timmy" class="pet">
-                        <img src="assets/img/timmy.png" alt="Foto  Timmy">               
+                    <a href="#timmy" class="pet">
+                        <img src="assets/img/timmy.png" alt="Foto Timmy">               
                         <p class="name">Timmy</p>
                         <span class="button-pets">Learn more</span>
                     </a>
-                    <a href="charly" class="pet">
-                        <img src="assets/img/charly.png" alt="Foto  Charly">               
+                    <a href="#charly" class="pet">
+                        <img src="assets/img/charly.png" alt="Foto Charly">               
                         <p class="name">Charly</p>
                         <span class="button-pets">Learn more</span>
                     </a>
-                    <a href="scarlett" class="pet">
-                        <img src="assets/img/scarlett.png" alt="Foto  Scarlett">               
+                    <a href="#scarlett" class="pet">
+                        <img src="assets/img/scarlett.png" alt="Foto Scarlett">               
                         <p class="name">Scarlett</p>
                         <span class="button-pets">Learn more</span>
                     </a>
-                    <a href="freddie" class="pet">
-                        <img src="assets/img/freddie.png" alt="Foto  Freddie">               
+                    <a href="#freddie" class="pet">
+                        <img src="assets/img/freddie.png" alt="Foto Freddie">               
                         <p class="name">Freddie</p>
                         <span class="button-pets">Learn more</span>
                     </a>
-                </div>    
+                </div>
 
                 <div class="navigation">
-                    <button class="arrow inactive">
-                        <img src="assets/img/icon/two-l.png" alt="icon arrow-left">
+                    <button class="arrow first-page">
+                        <p>&lt;&lt;</p>
                     </button>
-                    <button class="arrow inactive">
-                        <img src="assets/img/icon/one-l.png" alt="icon arrow-right">
+                    <button class="arrow prev-page">
+                        <p>&lt;</p>
                     </button>
-                    <button class="arrow arrow-active">
-                        <img src="assets/img/icon/one.png" alt="icon arrow-right">
+                    <button class="arrow arrow-active current-page">
+                        <p>1</p>
                     </button>
-                    <button class="arrow">
-                        <img src="assets/img/icon/one-r.png" alt="icon arrow-right">
+                    <button class="arrow next-page">
+                        <p>&gt;</p>
                     </button>
-                    <button class="arrow">
-                        <img src="assets/img/icon/two-r.png" alt="icon arrow-right">
+                    <button class="arrow last-page">
+                        <p>&gt;&gt;</p>
                     </button>
                 </div>    
             </section>
@@ -140,6 +140,26 @@
             <img class="footer-img" src="assets/img/footer-puppy.png" alt="Foto Footer puppy">
         </footer>
     </div>
-    <script src="index.js"></script>
+
+    <!----------------------- HTML for POPUP ----------------------->
+    <div id="pet-popup" class="popup hidden">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <img id="popup-pet-image" src="" alt="Pet Image">
+            <div class="text-popup">
+                <h3 id="popup-pet-name">Pet Name</h3>
+                <p id="popup-pet-type">Pet type</p>
+                <p id="popup-pet-description">Pet description goes here...</p>
+                <ul id="popup-pet-details">
+                    <li><strong>Age:</strong> <span id="popup-pet-age">2 months</span></li>
+                    <li><strong>Inoculations:</strong> <span id="popup-pet-inoculations">none</span></li>
+                    <li><strong>Diseases:</strong> <span id="popup-pet-diseases">none</span></li>
+                    <li><strong>Parasites:</strong> <span id="popup-pet-parasites">none</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="index-pets.js" defer></script>
 </body>
 </html>
