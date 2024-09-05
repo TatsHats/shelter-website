@@ -1,17 +1,18 @@
 /*----------------------------------- MENU BURGER -----------------------------------*/
+
 const iconMenu = document.querySelector('.menu-icon');
 if (iconMenu) {
     const menuBody = document.querySelector('.mobile-nav');
     const fadeBackground = document.querySelector('.mobile-nav-fade');
     const menuLinks = document.querySelectorAll('.mobile-nav-list a');
     const firstMenuItem = document.querySelector('.mobile-nav-link-select');
-    
+
     // Обработчик клика на иконке меню
     iconMenu.addEventListener("click", function () {
         document.body.classList.toggle('lock');
         iconMenu.classList.toggle('active');
         menuBody.classList.toggle('active');
-        fadeBackground.classList.toggle('active');
+        fadeBackground.classList.toggle('active'); // Показать/скрыть подложку
     });
 
     // Обработчик клика на подложке
@@ -152,7 +153,7 @@ function openPopup(pet) {
     popupParasites.textContent = pet.Parasites;
     popup.classList.remove('hidden');
     document.body.classList.add('lock');
-    fadeBackground.classList.toggle('active');
+    fadeBackground.classList.toggle('active'); // Показать/скрыть подложку
 }
 
 // Закрытие попапа
@@ -161,7 +162,6 @@ function closePopup() {
     document.body.classList.remove('lock');
     fadeBackground.classList.remove('active');
 }
-
 // Добавление обработчика события на каждую карточку питомца
 petsCart.addEventListener('click', (event) => {
     const petCard = event.target.closest('.pet');
@@ -183,66 +183,166 @@ popup.addEventListener('click', (event) => {
 });
 
 
-/*----------------------------------- SLIDER -----------------------------------*/
-const petsContainer = document.querySelector('.pets-cart');
-const pets = Array.from(document.querySelectorAll('.pets-cart .pet'));
-let currentStartIndex = 0;
+/*----------------------------------- PAGINATION -----------------------------------*/
 
-// отслеживание ширины экрана
-function getVisibleCount() {
-    const width = window.innerWidth;
-    let countCards = 1;
-    if (width >= 1280) countCards = 3;
-    else if (width >= 768) countCards =  2;
-    console.log('Количество карточек:', countCards, 'Ширина экрана: ', width);
-    return countCards;
+// массив питомцев (всего 8)
+const petsForArray = [
+    { name: 'Katrine', img: 'assets/img/katrine.png' },
+    { name: 'Jennifer', img: 'assets/img/jennifer.png' },
+    { name: 'Woody', img: 'assets/img/woody.png' },
+    { name: 'Sophia', img: 'assets/img/sophia.png' },
+    { name: 'Timmy', img: 'assets/img/timmy.png' },
+    { name: 'Charly', img: 'assets/img/charly.png' },
+    { name: 'Scarlett', img: 'assets/img/scarlett.png' },
+    { name: 'Freddie', img: 'assets/img/freddie.png' },
+];
+
+// перемешивание массива:
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
 
-
-function updateVisibleCards() {
-    const visibleCount = getVisibleCount();
-    console.log('Количество карточек 1:', visibleCount);
-    petsContainer.innerHTML = '';
-
-    for (let i = 0; i < visibleCount; i++) {
-        console.log('i = ', i);
-        const petIndex = (currentStartIndex + i) % pets.length;
-        const petClone = pets[petIndex].cloneNode(true); // клонирование карточек для создания бесконечного слайдера
-        petsContainer.appendChild(petClone);
-    }
+// массив из 48 элементов (массив 8 карточек * 6):
+const fullPetsArray = [];
+for (let i = 0; i < 6; i++) {
+    const shuffledArray = shuffle([...petsForArray]);
+    fullPetsArray.push(...shuffledArray);
 }
 
-
-function updateSlider(direction) {
-    const visibleCount = getVisibleCount();
-    console.log('Количество карточек 2:', visibleCount);
-
-    if (direction === 'next') {
-        currentStartIndex = (currentStartIndex + visibleCount) % pets.length;
-    } else {
-        currentStartIndex = (currentStartIndex - visibleCount + pets.length) % pets.length;
+// Функция пагинации
+function paginatePets(array, itemsPerPage) {
+    const paginated = [];
+    for (let i = 0; i < array.length; i += itemsPerPage) {
+        paginated.push(array.slice(i, i + itemsPerPage));
     }
-
-    updateVisibleCards();
+    return paginated;
 }
 
-// Обработчики событий для стрелок
-document.querySelector('.arrow-left').addEventListener('click', () => updateSlider('prev'));
-document.querySelector('.arrow-right').addEventListener('click', () => updateSlider('next'));
-
-// Обработчик события изменения размера окна
-window.addEventListener('resize', () => {
-    const oldVisibleCount = getVisibleCount();
-    updateVisibleCards();
-
-    // После изменения размера экрана корректируем currentStartIndex
-    const newVisibleCount = getVisibleCount();
-    if (oldVisibleCount !== newVisibleCount) {
-        currentStartIndex = Math.floor(currentStartIndex / oldVisibleCount) * newVisibleCount;
-    }
-});
-
-// Инициализация слайдера при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
-    updateVisibleCards();
+    // Определяем количество карточек на странице в зависимости от ширины экрана
+    // 1280px - 6 стр. по 8 карт., 768px — 8 стр. по 6 карт., 320px — 16 стр. по 3 карт.
+    let itemsPerPage = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 6 : 3;
+
+    let paginatedPets = paginatePets(fullPetsArray, itemsPerPage);
+
+    // Отслеживание текущей страницы:
+    let currentPage = 0;
+    function renderPets(pageNumber) {
+        const petsContainer = document.querySelector('.pets-cart');
+        petsContainer.innerHTML = '';
+
+        paginatedPets[pageNumber].forEach(pet => {
+            const petElement = document.createElement('a');
+            petElement.href = `#${pet.name.toLowerCase()}`;
+            petElement.classList.add('pet');
+            petElement.innerHTML = `<img src="${pet.img}" alt="Foto ${pet.name}">
+                                    <p class="name">${pet.name}</p>
+                                    <span class="button-pets">Learn more</span>`;
+            petsContainer.appendChild(petElement);
+        });
+    }
+
+    renderPets(currentPage);
+
+    // Обработка переключения страниц
+    document.querySelector('.navigation').addEventListener('click', (e) => {
+        if (e.target.closest('.arrow')) {
+            const buttonClass = e.target.closest('.arrow').classList[1];
+            if (buttonClass.includes('left') && currentPage > 0) {
+                currentPage--;
+            } else if (buttonClass.includes('right') && currentPage < paginatedPets.length - 1) {
+                currentPage++;
+            }
+            renderPets(currentPage);
+            updatePage();
+        }
+    });
+
+    /*----------------------------------- NAVIGATION -----------------------------------*/
+
+    const currentPageEl = document.querySelector('.current-page p');
+    const firstPageButton = document.querySelector('.first-page');
+    const prevPageButton = document.querySelector('.prev-page');
+    const nextPageButton = document.querySelector('.next-page');
+    const lastPageButton = document.querySelector('.last-page');
+
+    let totalPages = Math.ceil(48 / itemsPerPage);   
+
+    function updatePage() {
+        currentPageEl.textContent = currentPage + 1;
+
+        // Отключение кнопок в зависимости от текущей страницы
+        if (currentPage === 0) {
+            firstPageButton.classList.add('inactive');
+            prevPageButton.classList.add('inactive');
+        } else {
+            firstPageButton.classList.remove('inactive');
+            prevPageButton.classList.remove('inactive');
+        }
+
+        if (currentPage === totalPages - 1) {
+            nextPageButton.classList.add('inactive');
+            lastPageButton.classList.add('inactive');
+        } else {
+            nextPageButton.classList.remove('inactive');
+            lastPageButton.classList.remove('inactive');
+        }
+    }
+
+    // Слушатели событий для кнопок
+    firstPageButton.addEventListener('click', () => {
+        if (currentPage > 0) {
+            currentPage = 0;
+            renderPets(currentPage);
+            updatePage();
+        }
+    });
+
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 0) {
+            currentPage--;
+            renderPets(currentPage);
+            updatePage();
+        }
+    });
+
+    nextPageButton.addEventListener('click', () => {
+        if (currentPage < totalPages - 1) {
+            currentPage++;
+            renderPets(currentPage);
+            updatePage();
+        }
+    });
+
+    lastPageButton.addEventListener('click', () => {
+        if (currentPage < totalPages - 1) {
+            currentPage = totalPages - 1;
+            renderPets(currentPage);
+            updatePage();
+        }
+    });
+
+    // Обновление количества страниц при изменении размера окна
+    window.addEventListener('resize', () => {
+        const prevItemsPerPage = itemsPerPage;
+        itemsPerPage = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 6 : 3;
+    
+        if (prevItemsPerPage !== itemsPerPage) {
+            paginatedPets = paginatePets(fullPetsArray, itemsPerPage);
+            totalPages = Math.ceil(48 / itemsPerPage);
+    
+            if (currentPage >= totalPages) {
+                currentPage = totalPages - 1;
+            }
+    
+            renderPets(currentPage);
+            updatePage();
+        }
+    });
+    
+    updatePage();
 });
