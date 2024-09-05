@@ -222,48 +222,48 @@ function paginatePets(array, itemsPerPage) {
     return paginated;
 }
 
-// Определяем количество карточек на странице в зависимости от ширины экрана
-// 1280px - 6 стр. по 8 карт., 768px — 8 стр. по 6 карт., 320px — 16 стр. по 3 карт.
-const itemsPerPage = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 6 : 3;
-
-let paginatedPets = paginatePets(fullPetsArray, itemsPerPage);
-
-// Отслеживание текущей страницы:
-let currentPage = 0;
-function renderPets(pageNumber) {
-    const petsContainer = document.querySelector('.pets-cart');
-    petsContainer.innerHTML = '';
-
-    paginatedPets[pageNumber].forEach(pet => {
-        const petElement = document.createElement('a');
-        petElement.href = `#${pet.name.toLowerCase()}`;
-        petElement.classList.add('pet');
-        petElement.innerHTML = `<img src="${pet.img}" alt="Foto ${pet.name}">
-                                <p class="name">${pet.name}</p>
-                                <span class="button-pets">Learn more</span>`;
-        petsContainer.appendChild(petElement);
-    });
-}
-
-renderPets(currentPage);
-
-// Обработка переключения страниц
-document.querySelector('.navigation').addEventListener('click', (e) => {
-    if (e.target.closest('.arrow')) {
-        const buttonClass = e.target.closest('.arrow').classList[1];
-        if (buttonClass.includes('left') && currentPage > 0) {
-            currentPage--;
-        } else if (buttonClass.includes('right') && currentPage < paginatedPets.length - 1) {
-            currentPage++;
-        }
-        renderPets(currentPage);
-        updatePage();
-    }
-});
-
-/*----------------------------------- NAVIGATION -----------------------------------*/
-
 document.addEventListener('DOMContentLoaded', () => {
+    // Определяем количество карточек на странице в зависимости от ширины экрана
+    // 1280px - 6 стр. по 8 карт., 768px — 8 стр. по 6 карт., 320px — 16 стр. по 3 карт.
+    let itemsPerPage = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 6 : 3;
+
+    let paginatedPets = paginatePets(fullPetsArray, itemsPerPage);
+
+    // Отслеживание текущей страницы:
+    let currentPage = 0;
+    function renderPets(pageNumber) {
+        const petsContainer = document.querySelector('.pets-cart');
+        petsContainer.innerHTML = '';
+
+        paginatedPets[pageNumber].forEach(pet => {
+            const petElement = document.createElement('a');
+            petElement.href = `#${pet.name.toLowerCase()}`;
+            petElement.classList.add('pet');
+            petElement.innerHTML = `<img src="${pet.img}" alt="Foto ${pet.name}">
+                                    <p class="name">${pet.name}</p>
+                                    <span class="button-pets">Learn more</span>`;
+            petsContainer.appendChild(petElement);
+        });
+    }
+
+    renderPets(currentPage);
+
+    // Обработка переключения страниц
+    document.querySelector('.navigation').addEventListener('click', (e) => {
+        if (e.target.closest('.arrow')) {
+            const buttonClass = e.target.closest('.arrow').classList[1];
+            if (buttonClass.includes('left') && currentPage > 0) {
+                currentPage--;
+            } else if (buttonClass.includes('right') && currentPage < paginatedPets.length - 1) {
+                currentPage++;
+            }
+            renderPets(currentPage);
+            updatePage();
+        }
+    });
+
+    /*----------------------------------- NAVIGATION -----------------------------------*/
+
     const currentPageEl = document.querySelector('.current-page p');
     const firstPageButton = document.querySelector('.first-page');
     const prevPageButton = document.querySelector('.prev-page');
@@ -326,5 +326,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Обновление количества страниц при изменении размера окна
+    window.addEventListener('resize', () => {
+        const prevItemsPerPage = itemsPerPage;
+        itemsPerPage = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 6 : 3;
+    
+        if (prevItemsPerPage !== itemsPerPage) {
+            paginatedPets = paginatePets(fullPetsArray, itemsPerPage);
+            totalPages = Math.ceil(48 / itemsPerPage);
+    
+            if (currentPage >= totalPages) {
+                currentPage = totalPages - 1;
+            }
+    
+            renderPets(currentPage);
+            updatePage();
+        }
+    });
+    
     updatePage();
 });
