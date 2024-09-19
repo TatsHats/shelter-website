@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.wrapper {
+    background-image: url(./assets/img/Adele.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player {
+    max-width: 400px;
+    background: rgba(8, 8, 8, 0.5);
+    border-radius: 3px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 4px solid rgba(220, 218, 218, 0.8);
+    margin: 50px auto;
+}
+
+.current-img {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
+}
+
+.control-info {
+    margin-top: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+    .info-group {
+        font-size: 20px;
+    }
+    .track {
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.controls-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.controls-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.control-progres {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.progress-current {
+    height: 4px;
+    background-color: #e2e2e2;
+    width: 20%;
+    border-radius: 5px;
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 5px;
+    color: #ffffff;
+}
+
+footer {
+    width: 100%;
+    background: rgba(8, 8, 8, 0.4);
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.github, .logo {
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.logo img {
+    width: 70px;
+    height: auto;
+}
+
+footer p {
+    margin-top: 10px;
+    color: #ffffff;
+}
