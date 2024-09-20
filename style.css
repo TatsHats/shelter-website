@@ -28,7 +28,7 @@ body {
 }
 
 .player {
-    max-width: 400px;
+    width: 400px;
     background: rgba(8, 8, 8, 0.5);
     border-radius: 3px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -43,6 +43,7 @@ body {
     background-size: cover;
     background-position: center;
     border-radius: 3px;
+    border: 4px solid rgba(220, 218, 218, 0.8);
 }
 
 .control-info {
@@ -79,7 +80,7 @@ body {
 .buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .controls-button {
@@ -90,13 +91,25 @@ body {
 }
 
 .controls-button img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
+    margin: 10px 15px;
+}
+
+.button-play img, .button-pause img {
+    width: 60px;
+    height: 60px;
+}
+
+.controls-progres {
+    margin-top: 10px;
+    width: 100%;
+    
 }
 
 .control-progres {
-    margin-top: 10px;
-    width: 100%;
+    border: 1px solid rgba(220, 218, 218, 0.8);
+    border-radius: 5px;
 }
 
 .progress-current {
@@ -113,6 +126,51 @@ body {
     margin-top: 5px;
     color: #ffffff;
 }
+
+.volume {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5%;
+}
+    .volume img {
+        width: 20px;
+        height: 20px;
+    }
+    .control-volume {
+        -webkit-appearance: none; /* Убираем стандартный стиль для Chrome */
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(to right, #cccccc 50%, transparent 50%); /* Левая часть с цветом, правая — прозрачная */
+        border-radius: 5px;
+        border: 1px solid rgba(220, 218, 218, 0.8);
+        outline: none;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+    }
+    .control-volume:hover {
+        opacity: 1;
+    }  
+    .control-volume::-webkit-slider-thumb { /* Стиль для ползунка (thumb) */
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    }
+    
+    .control-volume::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    }
 
 footer {
     width: 100%;

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./index.js">
     <title>Document</title>
 </head>
 <body>
@@ -19,10 +20,11 @@
                 </div>
 
                 <div class="controls">
-                    <div class="control-progres">
-                        <div class="progress-current">
-
+                    <div class="controls-progres">
+                        <div class="control-progres">
+                            <div class="progress-current"></div>
                         </div>
+
                         <div class="timeline">
                             <span class="timeline-start">00:00</span>
                             <span class="timeline-end">03:00</span>
@@ -31,18 +33,25 @@
 
                     <div class="buttons">
                         <button class="controls-button button-prev">
-                            <img src="./assets/icon/Prev.png" alt="prev track" class="icon-arrow">
+                            <img src="./assets/icon/Prev.png" alt="prev track">
                         </button>
-                        <button class="controls-button button-play">
-                            <img src="./assets/icon/Pause.png" alt="pause" class="icon-arrow">
-                            <img src="./assets/icon/Play.png" alt="play" class="icon-arrow">
+
+                        <button id="button-play" class="controls-button button-play">
+                            <img src="./assets/icon/Play.png" alt="play">
                         </button>
+                        <button id="button-pause" class="controls-button button-pause" style="display: none;">
+                            <img src="./assets/icon/Pause.png" alt="pause">
+                        </button>
+
                         <button class="controls-button button-next">
-                            <img src="./assets/icon/Next.png" alt="next track" class="icon-arrow">
+                            <img src="./assets/icon/Next.png" alt="next track">
                         </button>
                     </div>
 
-                    <input class="control-volume" type="range" min="0" max="1" step="0.1" value="0.5" name="volume">                 
+                    <div class="volume">
+                        <img src="./assets/icon/Volume.png" alt="Volume">
+                        <input class="control-volume" type="range" min="0" max="1" step="0.1" value="0.5" name="volume">                 
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,5 +64,6 @@
             <p>2024</p>
         </footer>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>
