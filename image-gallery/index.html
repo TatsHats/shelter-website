@@ -7,17 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <header class="header">
+        <div class="gallery-logo">
+            <img src="./assets/icon/logo-img.png" alt="logo-image">
+            <span class="name">Unsplash API</span>
+        </div>
 
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Что будем искать?">
+            <button type="submit" aria-label="Search">Search</button>
+        </form>
     </header>
 
+    <div class="gallery"></div>
 
-
-
-
-    
     <footer>
-
+        <a class="github" href="https://github.com/TatsHats">GitHub page</a>
+        <a class="logo" href="https://rs.school/courses/javascript-ru">
+            <img src="assets/icon/logo-RS.png" alt="logo Rolling Scopes School">
+        </a>
+        <p>2024</p>
     </footer>
     <script src="./script.js"></script>
 </body>
