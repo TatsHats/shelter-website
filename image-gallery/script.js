@@ -1,3 +1,18 @@
+window.onload = function() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.focus();
+    searchInput.addEventListener('input', function() {
+        const clearButton = document.getElementById('clearButton');
+        clearButton.style.display = searchInput.value ? 'inline' : 'none';
+    });
+
+    document.getElementById('clearButton').addEventListener('click', function() {
+        searchInput.value = '';
+        searchInput.focus();
+        this.style.display = 'none';
+    });
+};
+
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); // чтобы страница не перезагружалась
 
