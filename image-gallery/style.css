@@ -1,8 +1,18 @@
-body {
+body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ------------------------- HEADER ------------------------- */
 .header {
     background-color: #c6f7b7;
     padding: 20px 30px;
@@ -12,12 +22,6 @@ body {
     justify-content: space-between;
     border: 4px solid #2d2c2c;
     flex-wrap: wrap;
-}
-
-.gallery {
-    background: linear-gradient(180deg, #c6f7b7, #123501);
-    border-left: 4px solid #2d2c2c;
-    border-right: 4px solid #2d2c2c;
 }
 
 .gallery-logo {
@@ -82,11 +86,16 @@ button {
     margin-left: -45px;
 }
 
+/* ------------------------- CENTR ------------------------- */
 .gallery {
+    background: linear-gradient(180deg, #c6f7b7, #123501);
+    border-left: 4px solid #2d2c2c;
+    border-right: 4px solid #2d2c2c;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     padding: 20px;
+    flex-grow: 1;
 }
 
 .gallery img {
@@ -95,6 +104,7 @@ button {
     border: 2px solid #2d2c2c;
 }
 
+/* ------------------------- FOOTER ------------------------- */
 footer {
     width: 100%;
     background: #123501;
@@ -106,6 +116,7 @@ footer {
     border: 4px solid #2d2c2c;
     border-top: none;
     box-sizing: border-box;
+    margin-top: auto;
 }
 
 .github, .logo {
@@ -129,7 +140,7 @@ footer p {
 }
 
 
-
+/* ------------------------- MEDIA ------------------------- */
 @media (max-width: 768px) {
     .gallery {
       grid-template-columns: repeat(2, 1fr);
@@ -137,7 +148,6 @@ footer p {
     .gallery-logo {
         width: 100%;
         justify-content: center;
-
     }
   }
   
