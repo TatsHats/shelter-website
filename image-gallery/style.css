@@ -4,14 +4,20 @@ body {
 }
 
 .header {
-    width: 100%;
-    flex-direction: row;
-    background-color: blanchedalmond;
-    padding: 40px;
+    background-color: #c6f7b7;
+    padding: 20px 30px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 4px solid #2d2c2c;
+    flex-wrap: wrap;
+}
+
+.gallery {
+    background: linear-gradient(180deg, #c6f7b7, #123501);
+    border-left: 4px solid #2d2c2c;
+    border-right: 4px solid #2d2c2c;
 }
 
 .gallery-logo {
@@ -21,7 +27,7 @@ body {
     justify-content: space-between;
 }
     .gallery-logo span {
-        font-size: 3rem;
+        font-size: 2rem;
         color: rgb(56, 56, 56);
         margin-left: 20px;
     }
@@ -30,49 +36,76 @@ body {
         height: auto;
     }
 
+    .radio-buttons {
+        display: flex;
+        gap: 10px;
+        margin-left: 15px;
+        align-items: center;
+    }
+    
+    .radio-buttons label {
+        cursor: pointer;
+    }
+    
+    .radio-buttons input[type="radio"] {
+        display: none;
+    }
+    
+    .radio-buttons img {
+        width: 40px;
+        height: auto;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .radio-buttons input[type="radio"]:checked + img {
+        opacity: 1;
+    }
+
 #searchInput {
     padding: 10px 20px;
-    font-size: 1,5rem;
+    font-size: 1.5rem;
     border: 2px solid #2d2c2c;
     border-radius: 50px;
     outline: none;
     box-sizing: border-box;
 }
-#searchInput:focus {
-    border-color: blueviolet;
-}
 
 button {
     background-color: #2d2c2c;
     color: #ffffff;
-    padding: 11px 15px;
-    font-size: 1,5rem;
+    padding: 12px 15px;
+    font-size: 1.5rem;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    margin-left: -35px;
+    margin-left: -45px;
 }
 
 .gallery {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    padding: 20px;
 }
 
 .gallery img {
     width: 100%;
     height: auto;
+    border: 2px solid #2d2c2c;
 }
 
 footer {
     width: 100%;
-    background: rgba(8, 8, 8, 0.4);
+    background: #123501;
     padding: 15px 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 20px;
+    font-size: 24px;
+    border: 4px solid #2d2c2c;
+    border-top: none;
+    box-sizing: border-box;
 }
 
 .github, .logo {
@@ -100,6 +133,11 @@ footer p {
 @media (max-width: 768px) {
     .gallery {
       grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery-logo {
+        width: 100%;
+        justify-content: center;
+
     }
   }
   
