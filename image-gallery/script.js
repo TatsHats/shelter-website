@@ -1,4 +1,5 @@
 window.onload = function() {
+    loadInitialImages();
     const searchInput = document.getElementById('searchInput');
     searchInput.focus();
     searchInput.addEventListener('input', function() {
@@ -12,6 +13,21 @@ window.onload = function() {
         this.style.display = 'none';
     });
 };
+
+function loadInitialImages() {
+    const initialApiUrl = 'https://api.unsplash.com/photos?orientation=landscape&per_page=6&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo'; // Изменение: Добавлен запрос с ограничением по ориентации и количеству изображений
+
+    fetch(initialApiUrl).then(response => response.json()).then(data => {
+        const gallery = document.querySelector('.gallery');
+        gallery.innerHTML = '';
+        data.forEach(image => {
+            const el = document.createElement('img');
+            el.src = image.urls.small;
+            el.alt = image.alt_description || 'Unsplash image';
+            gallery.appendChild(el);
+        });
+    }).catch(error => console.error('Error:', error));
+}
 
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); // чтобы страница не перезагружалась
