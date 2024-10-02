@@ -7,13 +7,13 @@ body {
 
 canvas {
     display: block;
-    margin: 30px auto;
+    margin: 20px auto;
 }
 
 .volume {
     flex-direction: column;
     display: flex;
-    margin: 0 auto 20px;
+    margin: 0 auto;
     text-align: center;
     align-items: center;
 }
@@ -29,11 +29,11 @@ canvas {
 footer {
     width: 100%;
     background: linear-gradient(100deg, #68bf44, #064707);
-    padding: 15px 0;
+    padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 24px;
+    font-size: 20px;
     box-sizing: border-box;
     margin-top: auto;
 }

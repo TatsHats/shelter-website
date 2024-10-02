@@ -101,17 +101,17 @@ function drawGame() {
     
         ctx.fillStyle = 'white';
         ctx.font = '50px Arial';
-        ctx.fillText('Конец игры!', canvas.width / 2 - 130, canvas.height / 2 - 170);
+        ctx.fillText('Конец игры!', canvas.width / 2 - 130, canvas.height / 2 - 220);
     
         ctx.font = '30px Arial';
-        ctx.fillText(`Ваш счет: ${score}`, canvas.width / 2 - 70, canvas.height / 2 - 100);
-        ctx.fillText(`Время игры: ${time} сек`, canvas.width / 2 - 120, canvas.height / 2 - 60);
+        ctx.fillText(`Ваш счет: ${score}`, canvas.width / 2 - 70, canvas.height / 2 - 150);
+        ctx.fillText(`Время игры: ${time} сек`, canvas.width / 2 - 135, canvas.height / 2 - 100);
     
         // кнопка перезапуск игры
         const buttonRestart = document.createElement('button');
         buttonRestart.innerText = 'Еще раз!';
         buttonRestart.style.position = 'absolute';
-        buttonRestart.style.left = canvas.width / 2 + 30 + 'px';
+        buttonRestart.style.left = '41%';
         buttonRestart.style.top = canvas.height / 2 + 230 + 'px';
         buttonRestart.style.width = '180px';
         buttonRestart.style.height = '50px';
@@ -130,15 +130,16 @@ function drawGame() {
         // прорисовка табло результатов
         ctx.font = '20px Arial';
         const highScore = getHighScore();
-        ctx.fillText(`Рекорд:`, canvas.width / 2 - 180, canvas.height / 2 + 40);
-        ctx.fillText(`${highScore} очков`, canvas.width / 2 - 180, canvas.height / 2 + 70);
+        ctx.fillText(`Рекорд:`, canvas.width / 2 - 180, canvas.height / 2 - 30);
+        ctx.font = '14px Arial';
+        ctx.fillText(`${highScore} очков`, canvas.width / 2 - 180, canvas.height / 2);
 
-        ctx.fillText(`Последние игры:`, canvas.width / 2 + 50, canvas.height / 2 + 40);
+        ctx.fillText(`Последние игры:`, canvas.width / 2 + 50, canvas.height / 2 - 30);
         const gameResults = getGameResults();
         ctx.font = '14px Arial';
         gameResults.forEach((result, number) => {
         ctx.fillText(`#${number + 1} Счет: ${result.score}, Время: ${result.time}с`,
-            canvas.width / 2 + 50, canvas.height / 2 + 70 + number * 20);
+            canvas.width / 2 + 50, canvas.height / 2 + number * 20);
         });
     }
 
