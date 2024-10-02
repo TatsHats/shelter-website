@@ -7,11 +7,25 @@ body {
 
 canvas {
     display: block;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
+.volume {
+    flex-direction: column;
+    display: flex;
+    margin: 0 auto 20px;
+    text-align: center;
+    align-items: center;
+}
+    .volume img {
+        width: 70px;
+        height: auto;
+    }
+    .volume h1 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
 
-/* ------------------------- FOOTER ------------------------- */
 footer {
     width: 100%;
     background: linear-gradient(100deg, #68bf44, #064707);
@@ -23,6 +37,10 @@ footer {
     box-sizing: border-box;
     margin-top: auto;
 }
+    footer p {
+        margin-top: 10px;
+        color: #ffffff;
+    }
 
 .github, .logo {
     display: inline-block;
@@ -30,16 +48,11 @@ footer {
     text-decoration: none;
     color: #ffffff;
 }
-.github:hover, .logo:hover {
-    transform: scale(1.1);
-}
+    .github:hover, .logo:hover {
+        transform: scale(1.1);
+    }
+    .logo img {
+        width: 70px;
+        height: auto;
+    }
 
-.logo img {
-    width: 70px;
-    height: auto;
-}
-
-footer p {
-    margin-top: 10px;
-    color: #ffffff;
-}

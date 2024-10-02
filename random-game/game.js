@@ -1,5 +1,8 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
+const eatSound = new Audio('./sounds/eat.mp3');
+const hitSound = new Audio('./sounds/hit.mp3');
+
 let square = 32;
 let score = 0;
 let time = 0;
@@ -62,12 +65,12 @@ function drawGame() {
     ctx.font = '30px Arial';
     ctx.fillText(`Время: ${time}s`, square * 13, square * 2);
     
-
+    
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
-
     if(snakeX === food.x && snakeY === food.y) {
         score++;
+        eatSound.play();
         food = {
             x: Math.floor(Math.random() * 17 + 1) * square,
             y: Math.floor(Math.random() * 15 + 3) * square
@@ -78,6 +81,7 @@ function drawGame() {
     }
 
     if(snakeX < square || snakeX > square * 17 || snakeY < 3 * square || snakeY > square * 17) {
+        hitSound.play();
         endGame();
         return;
     }
@@ -103,7 +107,7 @@ function drawGame() {
         ctx.fillText(`Ваш счет: ${score}`, canvas.width / 2 - 70, canvas.height / 2 - 100);
         ctx.fillText(`Время игры: ${time} сек`, canvas.width / 2 - 120, canvas.height / 2 - 60);
     
-        // перезапуск игры
+        // кнопка перезапуск игры
         const buttonRestart = document.createElement('button');
         buttonRestart.innerText = 'Еще раз!';
         buttonRestart.style.position = 'absolute';
@@ -123,6 +127,7 @@ function drawGame() {
             location.reload();
         });
 
+        // прорисовка табло результатов
         ctx.font = '20px Arial';
         const highScore = getHighScore();
         ctx.fillText(`Рекорд:`, canvas.width / 2 - 180, canvas.height / 2 + 40);
@@ -187,11 +192,10 @@ function direction(ev) {
         dir = 'down';
 }
 
-
 // добавление таблицы результатов последних 10 игр и рекорда
 function getGameResults() {
     const results = localStorage.getItem('gameResults');
-    return results ? JSON.parse(results) : []; //если нет данных возвращаем пустой массив
+    return results ? JSON.parse(results) : []; //если нет данных возвращаем пустой массив (чтобы не выдавало ошибку)
 }
 
 function saveGameResult(score, time) {
