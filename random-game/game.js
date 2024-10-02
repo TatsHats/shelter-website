@@ -55,16 +55,22 @@ function drawGame() {
         ctx.fill();
     }
 
-    //настройки табло
-        //счет
-    ctx.fillStyle = 'white';
-    ctx.font = '40px Arial';
-    ctx.fillText(score, square * 2.5, square * 2);
-        //время
+    // настройки табло
+        // счет
     ctx.fillStyle = 'white';
     ctx.font = '30px Arial';
-    ctx.fillText(`Время: ${time}s`, square * 13, square * 2);
-    
+    ctx.fillText(score, square * 2.5, square * 2);
+        // время
+    ctx.fillStyle = 'white';
+    ctx.font = '30px Arial';
+    ctx.fillText(`Время: ${time}s`, square * 13 + 10, square * 2);
+        // управление
+    ctx.font = '16px Arial';
+    ctx.fillText(`Чтобы начать нажмите`, square * 6, square * 0.7);
+    ctx.fillText(`на любую из клавиш:`, square * 6 + 6, square * 1.2);
+    ctx.font = '24px Arial';
+    ctx.fillText(`🠕`, square * 8 + 10, square * 2 + 5);
+    ctx.fillText(`🠔 🠗 🠖`, square * 7 + 14, square * 2.5 + 10);
     
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
