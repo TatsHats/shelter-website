@@ -65,12 +65,11 @@ function drawGame() {
     ctx.font = '30px Arial';
     ctx.fillText(`Время: ${time}s`, square * 13 + 10, square * 2);
         // управление
-    ctx.font = '16px Arial';
-    ctx.fillText(`Чтобы начать нажмите`, square * 6, square * 0.7);
-    ctx.fillText(`на любую из клавиш:`, square * 6 + 6, square * 1.2);
+    ctx.font = '18px Arial';
+    ctx.fillText(`Чтобы начать нажмите`, square * 6, square);
+    ctx.fillText(`на любую из клавиш:`, square * 6 + 6, square * 1.5);
     ctx.font = '24px Arial';
-    ctx.fillText(`🠕`, square * 8 + 10, square * 2 + 5);
-    ctx.fillText(`🠔 🠗 🠖`, square * 7 + 14, square * 2.5 + 10);
+    ctx.fillText(`🠔 🠕 🠗 🠖`, square * 7 + 14, square * 2.5);
     
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
