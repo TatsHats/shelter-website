@@ -87,6 +87,7 @@ function drawGame() {
         clearInterval(timer);
         gameActive = false;
         gameOver = true;
+        saveGameResult(score, time);
         showGameOver();
     }
 
@@ -96,7 +97,7 @@ function drawGame() {
     
         ctx.fillStyle = 'white';
         ctx.font = '50px Arial';
-        ctx.fillText('Конец игры', canvas.width / 2 - 130, canvas.height / 2 - 150);
+        ctx.fillText('Конец игры!', canvas.width / 2 - 130, canvas.height / 2 - 170);
     
         ctx.font = '30px Arial';
         ctx.fillText(`Ваш счет: ${score}`, canvas.width / 2 - 70, canvas.height / 2 - 100);
@@ -106,9 +107,9 @@ function drawGame() {
         const buttonRestart = document.createElement('button');
         buttonRestart.innerText = 'Еще раз!';
         buttonRestart.style.position = 'absolute';
-        buttonRestart.style.left = canvas.width / 2 + 170 + 'px';
-        buttonRestart.style.top = canvas.height / 2 + 60 + 'px';
-        buttonRestart.style.width = '150px';
+        buttonRestart.style.left = canvas.width / 2 + 30 + 'px';
+        buttonRestart.style.top = canvas.height / 2 + 230 + 'px';
+        buttonRestart.style.width = '180px';
         buttonRestart.style.height = '50px';
         buttonRestart.style.fontSize = '24px';
         buttonRestart.style.backgroundColor = '#368225';
@@ -121,8 +122,20 @@ function drawGame() {
         buttonRestart.addEventListener('click', () => {
             location.reload();
         });
-    }
 
+        ctx.font = '20px Arial';
+        const highScore = getHighScore();
+        ctx.fillText(`Рекорд:`, canvas.width / 2 - 180, canvas.height / 2 + 40);
+        ctx.fillText(`${highScore} очков`, canvas.width / 2 - 180, canvas.height / 2 + 70);
+
+        ctx.fillText(`Последние игры:`, canvas.width / 2 + 50, canvas.height / 2 + 40);
+        const gameResults = getGameResults();
+        ctx.font = '14px Arial';
+        gameResults.forEach((result, number) => {
+        ctx.fillText(`#${number + 1} Счет: ${result.score}, Время: ${result.time}с`,
+            canvas.width / 2 + 50, canvas.height / 2 + 70 + number * 20);
+        });
+    }
 
     if(dir === 'left') snakeX -= square;
     if(dir === 'right') snakeX += square;
@@ -172,4 +185,29 @@ function direction(ev) {
         dir = 'right';
     else if(ev.keyCode === 40 && dir != 'up')
         dir = 'down';
+}
+
+
+// добавление таблицы результатов последних 10 игр и рекорда
+function getGameResults() {
+    const results = localStorage.getItem('gameResults');
+    return results ? JSON.parse(results) : []; //если нет данных возвращаем пустой массив
+}
+
+function saveGameResult(score, time) {
+    let results = getGameResults();  
+    results.push({ score, time });
+
+    if (results.length > 10) {
+        results = results.slice(-10);
+    }
+    
+    localStorage.setItem('gameResults', JSON.stringify(results));
+}
+
+function getHighScore() {
+    const results = getGameResults();
+    if (results.length === 0) return 0;
+    
+    return Math.max(...results.map(result => result.score)); // рекорд
 }
