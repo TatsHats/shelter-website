@@ -19,6 +19,8 @@ const background = new Image();
 background.src = './img/background.png';
 const imgScore = new Image();
 imgScore.src = './img/scoreImg.png';
+const imgTime = new Image();
+imgTime.src = './img/clock.png';
 
 const foodImages = [
     './img/apple.png',
@@ -46,6 +48,7 @@ function drawGame() {
     ctx.drawImage(background, 0, 0);
     ctx.drawImage(foodImage, food.x, food.y);
     ctx.drawImage(imgScore, square, square);
+    ctx.drawImage(imgTime, square * 14, square);
 
     // настройки змейки
     for(let i = 0; i < snake.length; i++) {
@@ -63,7 +66,7 @@ function drawGame() {
         // время
     ctx.fillStyle = 'white';
     ctx.font = '30px Arial';
-    ctx.fillText(`Время: ${time}s`, square * 13 + 10, square * 2);
+    ctx.fillText(`${time}с`, square * 17 - 10, square * 2);
         // управление
     ctx.font = '18px Arial';
     ctx.fillText(`Чтобы начать нажмите`, square * 6, square);
@@ -174,7 +177,7 @@ function startTimer() {
     }
 }
 
-let game = setInterval(drawGame, 120);
+let game = setInterval(drawGame, 130);
 
 let snake = [];
 snake[0] = {
